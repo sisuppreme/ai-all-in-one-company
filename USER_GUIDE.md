@@ -2,7 +2,7 @@
 
 This guide is for **you, the operator**: the person who commissions work from an AI agent that uses this repository. The agent has its own instructions (`BOOTSTRAP.md` and the skills); this file explains what you need to provide, what to expect, what you will be asked to approve, and what to do when something goes wrong.
 
-Current version: **1.0.0** (see `VERSION` and `CHANGELOG.md`).
+Current version: **1.1.0** (see `VERSION` and `CHANGELOG.md`).
 
 > **Roman Urdu mein fori shuruaat** chahiye to seedha neechay walay section **"Roman Urdu Quick-Start"** par jayein.
 
@@ -11,19 +11,19 @@ Current version: **1.0.0** (see `VERSION` and `CHANGELOG.md`).
 You need:
 
 - **An AI agent** that can read this repository — by git clone, by GitHub raw URLs, or through its file-fetch tool. Any of the four entry points in `custom-instructions/` works: Claude Code, Claude, Google AI Studio, or a generic agent.
-- **The repository itself.** Its planned GitHub address is https://github.com/sisuppreme/ai-all-in-one-company (not published yet — until it is, hand the agent the repo files or a local clone).
+- **The repository itself.** It is published, public, at https://github.com/sisuppreme/ai-all-in-one-company — the agent can clone or fetch it from there, or work from a local clone you hand it.
 - **A project folder** where the agent will create the project and its documents.
 - **Your decisions at three approval points** (Section 4). Everything else, the agent should be able to do from the repo.
 - **Secrets, when a project needs them** (API keys, logins): the agent will ask for specific items using the handoff in `templates/SECRETS_CHECKLIST.md`. Never paste secrets into project documents or code.
 - **Python 3** — only if you or the agent will run the repo's maintenance scripts (Section 7).
 
-You do **not** need to read the 227 skills. Your working documents are this guide, the project's own `requirements.md` and `progress.md`, and the approval questions the agent brings you.
+You do **not** need to read the 235 skills. Your working documents are this guide, the project's own `requirements.md` and `progress.md`, and the approval questions the agent brings you.
 
 ## 2. Step 0 — Starting the agent on this repo
 
 Do this once per agent/platform:
 
-1. **Paste the custom instructions.** Open the file in `custom-instructions/` that matches your agent (`claude-code.md`, `claude.md`, `ai-studio.md`, or `generic.md`) and paste it into the agent's custom-instructions / system-prompt area. Each file carries the repo address, the version pin ("OmniForge repo v1.0.0, 2026-11-21"), the bootstrap order, the hard rules, and the precedence summary.
+1. **Paste the custom instructions.** Open the file in `custom-instructions/` that matches your agent (`claude-code.md`, `claude.md`, `ai-studio.md`, or `generic.md`) and paste it into the agent's custom-instructions / system-prompt area. Each file carries the repo address, the version pin ("OmniForge repo v1.1.0, 2026-11-21"), the bootstrap order, the hard rules, and the precedence summary.
 2. **Start a session and give the agent your task** in plain words — what you want built, for whom, and any deadline or budget. A filled `templates/USER_BRIEF.md` is the best form for a new project, but a plain description works; the agent turns it into `requirements.md` and bounces anything vague back to you.
 3. **The agent then runs the bootstrap on its own** (`BOOTSTRAP.md`):
    - reads `VERSION` and the top `CHANGELOG.md` entry (if the repo version is over 6 months old, it must warn you and re-check tool claims against live sources);
@@ -36,7 +36,7 @@ Small jobs have a fast path: for a single-file fix or a one-skill task, the agen
 
 ## 3. Running a project with a playbook
 
-There are 13 playbooks in `playbooks/`, one per common web-app type: SaaS web app, content/blog site, API + database service, e-commerce store, clone rebuild, dashboard/admin panel, booking & scheduling, online learning (LMS), landing page, portfolio/marketing site, internal CRUD admin tool, two-sided marketplace, and realtime chat app.
+There are 21 playbooks in `playbooks/` — 13 of them one per common web-app type: SaaS web app, content/blog site, API + database service, e-commerce store, clone rebuild, dashboard/admin panel, booking & scheduling, online learning (LMS), landing page, portfolio/marketing site, internal CRUD admin tool, two-sided marketplace, and realtime chat app.
 
 When your task matches a playbook, the agent follows it step by step. Each playbook states the goal, the department order, which skills to load, which gates apply at each step (by gate ID), what to do when something fails, the definition of done, and a worked mini-example.
 
@@ -48,6 +48,8 @@ What you should expect during a run:
 - **Definition of done** includes a named **pre-provisioning complete** state: everything except provisioning-waived gates is green, the waivers are recorded with their unblocking conditions, and what remains is listed — so a project can be honestly "done locally" before any hosting exists.
 
 If your task matches no playbook, the agent routes by keywords through `SKILLS_INDEX.md` to the relevant departments. If nothing matches at all, it loads the core bundle and asks you — that is expected behaviour, not a failure.
+
+**When the project is not a new build.** Since v1.1.0 there are also 8 **hybrid playbooks** for work that starts from something which already exists: clone a reference product and redesign it completely (`clone-and-redesign`), give a working product a new identity (`clone-and-rebrand`), take over a broken or abandoned site and relaunch it (`rescue-and-relaunch`), move a live product to a new platform without losing data or search rankings (`replatform-migration`), turn a rough prototype into a production product (`prototype-to-production`), add AI features to a product that has none (`ai-ify-existing-product`), launch an existing product in a new country (`localize-new-market`), or turn a one-client app into a SaaS product others can subscribe to (`single-app-to-saas`). If your project sounds like one of these, say so in your brief — the agent starts from the matching hybrid playbook instead of a build-new one.
 
 ## 4. Your approval points
 
@@ -91,7 +93,7 @@ python3 scripts/build-bundles.py     # rebuild all bundles; enforces the token c
 python3 scripts/validate-skills.py   # format/ID/gate/example checks over every skill
 ```
 
-The build is healthy when validation reports **"Checked 227 skills. ALL PASS"** and bundle generation reports no cap failures (caps: `core.md` under 10,000 tokens; every other capped bundle at most 30,000 tokens; tokens = ceil(characters ÷ 4)). `scripts/generate-project.py` scaffolds a new project's mandated file set. The full maintenance procedure — versioning, the changelog, periodic re-verification — is in `docs/MAINTENANCE_RUNBOOK.md`; how to propose changes is in `CONTRIBUTING.md`; every structural decision and deviation is recorded in `docs/DECISIONS.md`.
+The build is healthy when validation reports **"Checked 235 skills. ALL PASS"** and bundle generation reports no cap failures (caps: `core.md` under 10,000 tokens; every other capped bundle at most 30,000 tokens; tokens = ceil(characters ÷ 4)). `scripts/generate-project.py` scaffolds a new project's mandated file set. The full maintenance procedure — versioning, the changelog, periodic re-verification — is in `docs/MAINTENANCE_RUNBOOK.md`; how to propose changes is in `CONTRIBUTING.md`; every structural decision and deviation is recorded in `docs/DECISIONS.md`.
 
 ## 8. Troubleshooting pointers
 
@@ -114,7 +116,7 @@ The build is healthy when validation reports **"Checked 227 skills. ALL PASS"** 
 
 ### Yeh repo kya hai?
 
-OmniForge aik poori web company ka knowledge aik hi repository mein hai: **227 skills, 18 departments** (product, design, coding, security, testing, waghera), **203 detection parameters** jo AI ki aam ghaltiyon ko pakarte hain, aur **13 playbooks** — mukhtalif qisam ki websites/apps banane ke mukammal tareeqay. Is ka maqsad yeh hai ke **aik hi AI agent**, baghair kisi doosri madad ke, professional web application research se lekar build, test aur handover tak khud bana sakay. Har fact real aur sourced hota hai — fake data, fake reviews ya fake features bilkul mana hain.
+OmniForge aik poori web company ka knowledge aik hi repository mein hai: **235 skills, 18 departments** (product, design, coding, security, testing, waghera), **203 detection parameters** jo AI ki aam ghaltiyon ko pakarte hain, aur **21 playbooks** — mukhtalif qisam ki websites/apps banane ke mukammal tareeqay. Is ka maqsad yeh hai ke **aik hi AI agent**, baghair kisi doosri madad ke, professional web application research se lekar build, test aur handover tak khud bana sakay. Har fact real aur sourced hota hai — fake data, fake reviews ya fake features bilkul mana hain.
 
 ### Shuru kaise karna hai — 3 steps
 

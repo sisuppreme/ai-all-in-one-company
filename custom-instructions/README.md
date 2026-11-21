@@ -2,7 +2,7 @@
 
 This folder holds one ready-to-paste instruction set per platform. Paste **one** file — the one for your platform. This README itself is never pasted anywhere; it records where each set lives on its platform, whether it persists, its size limit, and how to refresh it when the repo releases a new version.
 
-All four sets encode the same repo-first protocol and are pinned to **OmniForge repo v1.0.0 (2026-11-21)**. The repo URL in every set (https://github.com/sisuppreme/ai-all-in-one-company) is a placeholder until the repo is published; when the final URL is known, it changes in the repo first and the pasted copies are refreshed from the repo (see the update procedure below).
+All four sets encode the same repo-first protocol and are pinned to **OmniForge repo v1.1.0 (2026-11-21)**. The repo URL in every set (https://github.com/sisuppreme/ai-all-in-one-company) is a placeholder until the repo is published; when the final URL is known, it changes in the repo first and the pasted copies are refreshed from the repo (see the update procedure below).
 
 ## Per-platform notes
 
@@ -36,6 +36,8 @@ All four sets encode the same repo-first protocol and are pinned to **OmniForge 
 ## Update procedure (repo §11)
 
 The repo is versioned semantically (MAJOR.MINOR.PATCH) over its interface — skill paths, rule IDs, gate IDs, index fields, and bundle filenames:
+
+**Agent-side self-update (since v1.1.0):** the manual refresh below is no longer the only line of defence against a stale pin. Every set now instructs the agent itself to fetch the repo fresh at the start of every task and every session, compare `VERSION` with the pin, and — when the repo is newer — adopt the repo's current files automatically and without asking permission: the current `BOOTSTRAP.md`, the skill set rediscovered from the current `SKILLS_INDEX.md` (so skills and playbooks added after the pin are found, not assumed away), and the current bundles. The agent tells the user once, briefly, that the repo has been updated and it is using the new files. On multi-session projects the check repeats each session; a mid-project repo change is noted in `progress.md` and adopted for work not yet done, without rewriting completed, gate-passed work unless a changed gate touches safety, legal, or Real Content. When the agent cannot fetch at all, it must say so, ask for the **current** `bundles/core.md` (plus the relevant playbook bundle), and warn that pasted content may be older than the repo — it never silently works from memory or an old paste. The manual refresh procedure below still applies to the pasted instruction text itself, so the instructions a platform holds match the release they were copied from:
 
 - **MAJOR release** (a renamed or removed skill, a changed rule or gate ID, a changed index field) or **MINOR release** (a new skill, a new detection parameter, a new playbook): refresh every pasted copy. Open `custom-instructions/` at the new repo version, copy the file for your platform, and replace the pasted text wholesale; the version pin line inside the file already names the new version and date.
 - **PATCH release** (wording fixes, claim corrections, example updates): refreshing is optional but recommended at the next convenient session.

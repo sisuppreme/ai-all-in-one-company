@@ -2,20 +2,20 @@
 
 **A company in a repository.** OmniForge packages the working knowledge of a complete web-application company — product, architecture, frontend, backend, data, DevOps, security, QA, SEO, legal, analytics, accessibility, integrations, AI features, and customer experience — as structured skills that **one AI agent** can load and execute end-to-end: research, build, verify, deploy, document, and hand over professional **web applications**, with real content only and every claim sourced.
 
-- **Version:** 1.0.0 (see `VERSION` and `CHANGELOG.md`)
+- **Version:** 1.1.0 (see `VERSION` and `CHANGELOG.md`)
 - **Published, public:** https://github.com/sisuppreme/ai-all-in-one-company — the address the custom-instructions files are written against.
 
 ## What's inside
 
 | Component | Count | Where |
 |---|---|---|
-| Skills | 227 | `skills/<department>/<skill>/SKILL.md` |
+| Skills | 235 | `skills/<department>/<skill>/SKILL.md` |
 | Departments | 18 (D1–D18) | `skills/` |
 | Detection parameters | 203 across 7 families (visual, code, infra, content, UX, fake, crawl) | `skills/detection/` |
-| Playbooks | 13, one per common web-app type | `playbooks/` |
-| Bundles | 34 files — the always-on core, one per department, one per playbook, plus a reference-only `ALL_SKILLS.md` | `bundles/` |
+| Playbooks | 21 — 13 per common web-app type + 8 hybrid mission playbooks (v1.1.0) | `playbooks/` |
+| Bundles | 43 files — the always-on core, 20 department bundle files (18 departments; `seo-content` and `devops-deployment` each split across two files), 21 playbook bundles (one per playbook), plus a reference-only `ALL_SKILLS.md` | `bundles/` |
 | Gates | 69 inherited acceptance gates + the 10-gate skill-release QA protocol (G-QA-01…10), plus at least 3 gates inside every skill | `gates/`, `skills/` |
-| Worked examples | 681 before/after example files (3 per skill) + 18 department example documents | `skills/*/examples/`, `examples/` |
+| Worked examples | 706 before/after example files (3 per skill; `vector-db` carries a fourth) + 18 department example documents | `skills/*/examples/`, `examples/` |
 
 Every skill follows one memory-proof format: numbered rules with stable IDs, a BAN list (each banned pattern names the detection parameter it defeats and gives the correct replacement), gates with evidence requirements, anti-patterns, examples, recall anchors, and a checklist.
 
@@ -34,6 +34,21 @@ Phase 1 scope is **web applications**. Mobile and desktop applications are a lat
 4. **If the agent gets stuck**, it follows the stuck protocol in `docs/TROUBLESHOOTING.md` (skill → links → log → user → safe default) instead of inventing a way out.
 
 Operators: read `USER_GUIDE.md` — it walks the whole route in plain language, including a Roman Urdu quick-start.
+
+### Hybrid playbooks (v1.1.0)
+
+Not every project starts from a blank page. The 8 hybrid playbooks are mission-level workflows: each combines several departments in the order the mission actually needs them, and each anchors on one of the 8 skills added in v1.1.0 for work that is not "build new" — `clone-redesign` and `rebrand-execution` (D16), `project-takeover` and `prototype-hardening` (D15), `seo-migration` (D9), `ai-retrofit` (D17), `market-expansion` (D1), and `saas-conversion` (D2).
+
+| Playbook | Mission |
+|---|---|
+| `clone-and-redesign` | Clone a reference product's function, then redesign everything — original design, brand, and copy |
+| `clone-and-rebrand` | Keep a working product's function; replace its identity end-to-end (name, logo, palette, voice) |
+| `rescue-and-relaunch` | Take over a broken or abandoned live product, audit it, fix in priority order, and relaunch safely |
+| `replatform-migration` | Move a live product to a new stack or platform with zero data loss and search rankings preserved |
+| `prototype-to-production` | Turn a rough MVP or prototype (including AI-generated output) into production-grade software |
+| `ai-ify-existing-product` | Add AI features to a live non-AI product without breaking what already works |
+| `localize-new-market` | Launch an existing product in a new country — language, payments, legal, pricing, support |
+| `single-app-to-saas` | Convert a single-client application into a multi-tenant SaaS with billing and tenant isolation |
 
 ## Use it on your platform — exact files and links
 
@@ -72,14 +87,14 @@ Every platform starts the same way: **one** custom-instructions file from `custo
 | Path | What it holds |
 |---|---|
 | `BOOTSTRAP.md` | The start-here protocol every agent follows before doing anything else, including the 19-rank precedence order for when skills disagree |
-| `SKILLS_INDEX.md` | Script-generated catalog of all 227 skills: department, keywords, dependencies, size, gates. Scan it; do not read it whole |
-| `VERSION`, `CHANGELOG.md` | Current version (1.0.0) and its release record |
+| `SKILLS_INDEX.md` | Script-generated catalog of all 235 skills: department, keywords, dependencies, size, gates. Scan it; do not read it whole |
+| `VERSION`, `CHANGELOG.md` | Current version (1.1.0) and its release record |
 | `skills/` | The 18 department folders plus `skills/detection/` (the 203 detection parameters in 7 family files) |
-| `bundles/` | Generated, token-capped loads: `core.md` (always-on, under 10,000 tokens), 18 department bundles, 13 playbook bundles, `ALL_SKILLS.md` (reference only — never load it whole) |
-| `playbooks/` | 13 project playbooks — goal, department order, skills to load, gates by ID, failure handling, definition of done, worked mini-example |
+| `bundles/` | Generated, token-capped loads: `core.md` (always-on, under 10,000 tokens), 20 department bundle files (18 departments; `seo-content` and `devops-deployment` each split across two files), 21 playbook bundles, `ALL_SKILLS.md` (reference only — never load it whole) |
+| `playbooks/` | 21 project playbooks (13 by app type + 8 hybrid mission playbooks) — goal, department order, skills to load, gates by ID, failure handling, definition of done, worked mini-example |
 | `gates/` | The gate registry: `ACCEPTANCE_GATES.md` (69 gates), `QA_PROTOCOL_GATES.md` (G-QA-01…10), `FINAL_ACCEPTANCE_CHECKLIST.md`, `DEFECT_TAXONOMY.md`, `NUMBERS_REGISTRY.md`, `VISUAL_QA_INDEX.md`, and the placeholder scan lists |
 | `custom-instructions/` | Ready-to-paste entry points for Claude Code, Claude, Google AI Studio, and generic agents, plus a README explaining the set |
-| `templates/` | `SKILL_TEMPLATE.md`, `USER_BRIEF.md`, `SECRETS_CHECKLIST.md`, the markdownlint starter config, and the 13 mandated per-project-type file manifests |
+| `templates/` | `SKILL_TEMPLATE.md`, `USER_BRIEF.md`, `SECRETS_CHECKLIST.md`, the markdownlint starter config, and the 21 mandated per-project-type file manifests (the 13 original project types plus the 8 hybrid missions) |
 | `scripts/` | The repo's own tooling: `build-index.py`, `build-bundles.py`, `validate-skills.py`, `generate-project.py`, the SEO checkers, and `scripts/qa/` reference implementations |
 | `examples/` | One worked example document per department (18 files) |
 | `docs/` | The records and references: `PROJECT_ANATOMY.md` (the full project map), `METRICS.md` (every number, defined), `DECISIONS.md` (every deviation, with reasons), `WORK_LOG.md` + `work-log/` (the build record), `TROUBLESHOOTING.md` (stuck + waiver protocols), `MAINTENANCE_RUNBOOK.md`, `GLOSSARY.md`, `BAR_TRACEABILITY.md`, `DEPARTMENT_LINKS.md`, `contracts/` (the 14 cross-department contracts), and the research/mapping papers |
@@ -87,7 +102,7 @@ Every platform starts the same way: **one** custom-instructions file from `custo
 
 ## The 18 departments
 
-D1 Product & Requirements (13 skills) · D2 Architecture & System Design (13) · D3 Frontend, Design & Motion (16) · D4 Backend & APIs (16) · D5 Databases & Data (20) · D6 DevOps & Deployment (17) · D7 Security (14) · D8 QA & Testing (15) · D9 SEO & Content (14) · D10 Project & Memory (10) · D11 Integrations & Payments (12) · D12 Analytics & Observability (13) · D13 Accessibility & i18n (10) · D14 Legal & Privacy (10) · D15 Developer Experience (8) · D16 Cloning & Replication (7) · D17 AI Features (10) · D18 Customer Experience (9).
+D1 Product & Requirements (14 skills) · D2 Architecture & System Design (14) · D3 Frontend, Design & Motion (16) · D4 Backend & APIs (16) · D5 Databases & Data (20) · D6 DevOps & Deployment (17) · D7 Security (14) · D8 QA & Testing (15) · D9 SEO & Content (15) · D10 Project & Memory (10) · D11 Integrations & Payments (12) · D12 Analytics & Observability (13) · D13 Accessibility & i18n (10) · D14 Legal & Privacy (10) · D15 Developer Experience (10) · D16 Cloning & Replication (9) · D17 AI Features (11) · D18 Customer Experience (9).
 
 ## Quality evidence
 
