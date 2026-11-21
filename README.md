@@ -3,7 +3,7 @@
 **A company in a repository.** OmniForge packages the working knowledge of a complete web-application company — product, architecture, frontend, backend, data, DevOps, security, QA, SEO, legal, analytics, accessibility, integrations, AI features, and customer experience — as structured skills that **one AI agent** can load and execute end-to-end: research, build, verify, deploy, document, and hand over professional **web applications**, with real content only and every claim sourced.
 
 - **Version:** 1.0.0 (see `VERSION` and `CHANGELOG.md`)
-- **Planned GitHub address:** https://github.com/sisuppreme/ai-all-in-one-company — this repository is not published yet; the address is the one the custom-instructions files are written against.
+- **Published, public:** https://github.com/sisuppreme/ai-all-in-one-company — the address the custom-instructions files are written against.
 
 ## What's inside
 
@@ -34,6 +34,38 @@ Phase 1 scope is **web applications**. Mobile and desktop applications are a lat
 4. **If the agent gets stuck**, it follows the stuck protocol in `docs/TROUBLESHOOTING.md` (skill → links → log → user → safe default) instead of inventing a way out.
 
 Operators: read `USER_GUIDE.md` — it walks the whole route in plain language, including a Roman Urdu quick-start.
+
+## Use it on your platform — exact files and links
+
+Repository home: https://github.com/sisuppreme/ai-all-in-one-company
+
+Every platform starts the same way: **one** custom-instructions file from `custom-instructions/`, pasted into the platform's instructions box. Then, if the agent cannot open GitHub itself, paste `bundles/core.md` plus the one playbook bundle that matches your project (all bundles: https://github.com/sisuppreme/ai-all-in-one-company/tree/main/bundles). Never paste `bundles/ALL_SKILLS.md` — it is a human reference only.
+
+### Google AI Studio
+
+1. Open this file and copy its full content: https://github.com/sisuppreme/ai-all-in-one-company/blob/main/custom-instructions/ai-studio.md
+2. Go to https://aistudio.google.com, start a new chat, and paste the content into **System instructions**.
+3. In your first message, also paste:
+   - Core bundle (always): https://github.com/sisuppreme/ai-all-in-one-company/blob/main/bundles/core.md
+   - The playbook bundle for your project type, e.g. SaaS: https://github.com/sisuppreme/ai-all-in-one-company/blob/main/bundles/saas-web-app.md
+4. Describe your project. The agent then works under the repo's rules and gates.
+
+### Claude (claude.ai)
+
+1. Copy this file: https://github.com/sisuppreme/ai-all-in-one-company/blob/main/custom-instructions/claude.md
+2. Create a **Project** in Claude and paste the content into the project's **custom instructions**.
+3. Add `bundles/core.md` and your playbook bundle as project files/knowledge (links above).
+
+### Claude Code
+
+1. Copy this file: https://github.com/sisuppreme/ai-all-in-one-company/blob/main/custom-instructions/claude-code.md
+2. Save it as `CLAUDE.md` in your project folder (or append it to an existing `CLAUDE.md`). Claude Code can clone this repository itself, so no bundle pasting is needed.
+
+### Any other agent (ChatGPT, Gemini, Copilot, generic)
+
+1. Copy this file: https://github.com/sisuppreme/ai-all-in-one-company/blob/main/custom-instructions/generic.md
+2. Paste it into the tool's custom/system instructions.
+3. If the agent can open links or clone repositories, just give it the repository home link above — the instructions file tells it the rest. If it cannot, paste `bundles/core.md` plus your playbook bundle as in the AI Studio steps.
 
 ## Repository map
 
@@ -83,7 +115,7 @@ This repository was proof-tested before release, by fresh agents working only fr
 
 ## Licence
 
-No licence is applied yet — deliberately. Per `docs/DECISIONS.md` **D-004**, the licence is chosen and applied at GitHub finalization: **MIT if the repository is published public; all rights reserved if it stays private.** Until that decision is applied, no LICENSE file ships with the repo, and no licence should be assumed.
+**MIT** — see the `LICENSE` file in this repository. Per `docs/DECISIONS.md` **D-004/D-019**, the MIT licence was applied when the repository was published public on GitHub (2026-11-21).
 
 ## Maintaining this repo
 
