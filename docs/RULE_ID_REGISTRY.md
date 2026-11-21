@@ -21,6 +21,7 @@ Assignment scheme (DECISIONS D-012): within each department, skills in catalog o
 | pricing-monetization | PR-201–PR-220 | G-PR-101–PR-110 | BAN-PR-101–PR-110 |
 | unit-economics | PR-221–PR-240 | G-PR-111–PR-120 | BAN-PR-111–PR-120 |
 | roadmapping | PR-241–PR-260 | G-PR-121–PR-130 | BAN-PR-121–PR-130 |
+| market-expansion | PR-261–PR-280 | G-PR-131–PR-135 | BAN-PR-131–PR-136 |
 
 ## D2 — architecture (AR)
 
@@ -39,6 +40,7 @@ Assignment scheme (DECISIONS D-012): within each department, skills in catalog o
 | event-driven | AR-201–AR-220 | G-AR-101–AR-110 | BAN-AR-101–AR-110 |
 | domain-driven-design | AR-221–AR-240 | G-AR-111–AR-120 | BAN-AR-111–AR-120 |
 | adr-writing | AR-241–AR-260 | G-AR-121–AR-130 | BAN-AR-121–AR-130 |
+| saas-conversion | AR-261–AR-279 | G-AR-131–AR-136 | BAN-AR-131–AR-136 |
 
 ## D3 — frontend (FE)
 
@@ -186,6 +188,7 @@ Assignment scheme (DECISIONS D-012): within each department, skills in catalog o
 | social-open-graph | CO-221–CO-240 | G-CO-111–CO-120 | BAN-CO-111–CO-120 |
 | web-analytics | CO-241–CO-260 | G-CO-121–CO-130 | BAN-CO-121–CO-130 |
 | growth-experiments | CO-261–CO-280 | G-CO-131–CO-140 | BAN-CO-131–CO-140 |
+| seo-migration | CO-281–CO-292 | G-CO-141–CO-145 | BAN-CO-141–CO-146 |
 
 ## D10 — project-memory (PM)
 
@@ -279,6 +282,8 @@ Assignment scheme (DECISIONS D-012): within each department, skills in catalog o
 | refactoring | DX-101–DX-120 | G-DX-051–DX-060 | BAN-DX-051–DX-060 |
 | legacy-migration | DX-121–DX-140 | G-DX-061–DX-070 | BAN-DX-061–DX-070 |
 | versioning | DX-141–DX-160 | G-DX-071–DX-080 | BAN-DX-071–DX-080 |
+| prototype-hardening | DX-161–DX-177 | G-DX-081–DX-086 | BAN-DX-081–DX-088 |
+| project-takeover | DX-181–DX-192 | G-DX-091–DX-095 | BAN-DX-091–DX-095 |
 
 ## D16 — cloning-replication (CL)
 
@@ -291,6 +296,8 @@ Assignment scheme (DECISIONS D-012): within each department, skills in catalog o
 | behavior-cloning | CL-081–CL-100 | G-CL-041–CL-050 | BAN-CL-041–CL-050 |
 | page-reconstruction | CL-101–CL-120 | G-CL-051–CL-060 | BAN-CL-051–CL-060 |
 | fidelity-verification | CL-121–CL-140 | G-CL-061–CL-070 | BAN-CL-061–CL-070 |
+| clone-redesign | CL-141–CL-154 | G-CL-071–CL-076 | BAN-CL-071–CL-075 |
+| rebrand-execution | CL-701–CL-716 | G-CL-701–CL-705 | BAN-CL-701–CL-707 |
 
 ## D17 — ai-features (AI)
 
@@ -306,6 +313,7 @@ Assignment scheme (DECISIONS D-012): within each department, skills in catalog o
 | ai-evaluation | AI-141–AI-160 | G-AI-071–AI-080 | BAN-AI-071–AI-080 |
 | ai-observability | AI-161–AI-180 | G-AI-081–AI-090 | BAN-AI-081–AI-090 |
 | ai-cost-control | AI-181–AI-200 | G-AI-091–AI-100 | BAN-AI-091–AI-100 |
+| ai-retrofit | AI-201–AI-212 | G-AI-101–AI-105 | BAN-AI-101–AI-105 |
 
 ## D18 — customer-experience (CX)
 

@@ -139,7 +139,7 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Verify:** Run the test: the receiving owner, using only the handover materials, must deploy the project, find the runbook, name the top open risks, and state who accepts the transfer. Any step they cannot complete is a handover gap.
 - **Source:** Google Cloud Blog, "How SREs find the landmines in a service" (SRE entrance review / Production Readiness Review), https://cloud.google.com/blog/products/gcp/how-sres-find-the-landmines-in-a-service-cre-life-lessons
 - **Owning departments:** D10, D1
-- **Skills that serve it:** handover, runbook-writing, memory-retrieval
+- **Skills that serve it:** handover, runbook-writing, memory-retrieval, project-takeover
 
 ## Part 2 — Architecture & code
 
@@ -237,7 +237,7 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Verify:** Run the cross-tenant test: authenticate as a user of tenant A and request a known resource ID belonging to tenant B through the API and any export/report endpoint; every attempt must return 403 or 404, never the data.
 - **Source:** Microsoft Learn, "Multitenancy — Azure Cosmos DB" (tenancy models: partition key per tenant, account per tenant) — https://learn.microsoft.com/en-us/azure/cosmos-db/multi-tenancy-vector-search
 - **Owning departments:** D2, D4
-- **Skills that serve it:** multitenancy-saas, data-architecture
+- **Skills that serve it:** multitenancy-saas, data-architecture, saas-conversion
 
 ## Feature flags and experimentation
 - **What:** Runtime switches that turn features on or off without redeploying, plus the controlled experiments (A/B tests) run behind them.
@@ -713,7 +713,7 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Verify:** Run the live URLs through Google's Rich Results Test and URL Inspection in Search Console; fetch `/robots.txt` and `/sitemap.xml` and confirm they exist, are correct, and list only canonical indexable URLs.
 - **Source:** Google Search Central, SEO guide for developers — https://developers.google.com/search/docs/fundamentals/get-started-developers
 - **Owning departments:** D9 (Content, SEO, AEO, GEO & Growth)
-- **Skills that serve it:** technical-seo, on-page-seo, aeo, geo, web-analytics
+- **Skills that serve it:** technical-seo, on-page-seo, aeo, geo, web-analytics, seo-migration, rebrand-execution
 
 ## Analytics
 - **What:** The instrumentation that records what users actually do in the product — events, funnels, retention, revenue — so decisions rest on observed behavior instead of opinion. Analytics covers both product analytics and the web analytics that feed discoverability work.
@@ -737,7 +737,7 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Verify:** From a clean clone in a fresh environment, follow only the README and time the path to a running app with tests passing; inspect the repo for a lockfile, a CHANGELOG with recent entries, and version tags matching releases.
 - **Source:** Semantic Versioning 2.0.0 — https://semver.org/
 - **Owning departments:** D15 (Developer Experience, Tooling & Maintenance)
-- **Skills that serve it:** dev-environment, dependency-management, tech-debt, refactoring, legacy-migration, monorepo-tooling, code-generation
+- **Skills that serve it:** dev-environment, dependency-management, tech-debt, refactoring, legacy-migration, monorepo-tooling, code-generation, project-takeover, prototype-hardening
 
 ## Part 7 — Interface & experience
 
@@ -751,7 +751,7 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Verify:** Inspect the token source file; grep the codebase for hard-coded hex colors and pixel values outside it — the count should be near zero.
 - **Source:** Design Tokens Format Module 2025.10 — https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/
 - **Owning departments:** D3
-- **Skills that serve it:** design-system, design-tokens
+- **Skills that serve it:** design-system, design-tokens, rebrand-execution
 
 ## Component library
 - **What:** The coded collection of reusable UI building blocks — buttons, inputs, dialogs, tables — each with defined props, variants, and states, documented for builders.
@@ -921,7 +921,7 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Verify:** Inspect the LLM client module for timeout, retry, and schema validation; run the integration test suite with the provider mocked to return malformed JSON and a 429, and confirm the fallback path executes.
 - **Source:** OpenAI, Introduction to Structured Outputs — https://developers.openai.com/cookbook/examples/structured_outputs_intro?translationFallback=es-419
 - **Owning departments:** D17 (AI Features & Applied ML)
-- **Skills that serve it:** llm-integration, ai-cost-control
+- **Skills that serve it:** llm-integration, ai-cost-control, ai-retrofit
 
 ## Prompt engineering
 - **What:** The disciplined authoring, versioning, and testing of system and user prompts that steer model behavior. Prompts are treated as source code, not copy.
@@ -1189,7 +1189,7 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Verify:** Run the recorded interaction suite against the rebuild: every in-scope interactive element has at least one passing test, and a manual click-through of the inventory's flow list is signed off.
 - **Source:** Playwright Test documentation (scripted interactions and visual comparisons) — https://playwright.dev/docs/test-snapshots
 - **Owning departments:** D16 (Cloning & Replication)
-- **Skills that serve it:** behavior-cloning
+- **Skills that serve it:** behavior-cloning, clone-redesign
 
 ## Page reconstruction
 - **What:** Building the pages that cannot be captured directly — auth-gated, deleted, or never archived — from surviving evidence plus the extracted design system.
@@ -1201,7 +1201,7 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Verify:** Inspect the inventory: every page carries a status of captured, inferred, or designed; designed pages make no parity claim, and each inferred route is spot-checked against the bundle route manifest or a capture.
 - **Source:** Wayback CDX Server API (capture and digest lookup) — https://github.com/internetarchive/wayback/blob/master/wayback-cdx-server/README.md
 - **Owning departments:** D16 (Cloning & Replication)
-- **Skills that serve it:** page-reconstruction
+- **Skills that serve it:** page-reconstruction, clone-redesign
 
 ## Fidelity verification
 - **What:** Measuring, with numbers, how closely the rebuild matches the source in appearance and behavior, against thresholds agreed before the comparison runs.
@@ -1264,6 +1264,18 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Source:** Stripe, "A Guide to SaaS Pricing and Packaging" — https://stripe.com/resources/more/saas-pricing-and-packaging-strategy
 - **Owning departments:** D1
 - **Skills that serve it:** pricing-monetization
+
+## Market expansion
+- **What:** The evidence-based decision to launch an existing, already-shipping product into a new country or distinct market — and the readiness work that makes the launch survivable: local payments, locale support, legal obligations, local pricing, the local competitive set, and support.
+- **How it works:** Each candidate market gets one readiness record, scored on evidence across fixed dimensions (payments, localization tier, privacy and residency obligations, pricing, competition, support) against criteria registered before scoring begins. A pilot with pre-set kill thresholds precedes full launch, and the record closes with exactly one dated decision — GO, CONDITIONAL GO, or NO-GO — signed by a named decider.
+- **Why it exists:** A product that works at home can fail abroad for reasons invisible from home: the dominant local payment method is unsupported, prices converted at the exchange rate are prices nobody local will pay, or a data-residency law the architecture violates. The decision is cheap; the failed launch is not.
+- **If missing:** Expansion happens on enthusiasm — a translated homepage, FX-converted prices, no local payment method, contracts signed and dates announced before the legal exposure is discovered.
+- **Good looks like:** The World Bank Global Findex Database's per-economy payment-method and account-ownership data used as evidence for the payments dimension, and Unicode CLDR locale data (currencies, date and number formats) verified rather than assumed for the localization dimension.
+- **Slop looks like:** A slide-deck verdict of "huge market, let's launch," prices produced by currency conversion, machine-translated legal pages, and a pilot with no kill criteria that can never be declared a failure.
+- **Verify:** Open the readiness record: every dimension cites dated evidence rather than opinion, the criteria predate the scores, and the closing decision is one of the three values, signed and dated, with conditions or reasons that cite the dimension evidence.
+- **Source:** World Bank Global Findex Database — https://globalfindex.worldbank.org/
+- **Owning departments:** D1
+- **Skills that serve it:** market-expansion
 
 ## API implementation
 - **What:** The actual building of endpoints — routing, request handling, business logic, persistence, and responses — as distinct from the contract that specifies them. It includes the client side of the craft: conventions an SDK must honor so consumers can integrate reliably.
@@ -1517,7 +1529,7 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Verify:** Fetch /sitemap.xml, sample 20 URLs, and confirm each returns 200, is canonical and indexable, and appears in the rendered navigation or in-content links — not only in the sitemap.
 - **Source:** Google Search Central, build and submit a sitemap — https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap?hl=en&visit_id=638151133303993489-3155693086&rd=1
 - **Owning departments:** D9 (Content/SEO)
-- **Skills that serve it:** internal-linking, sitemaps
+- **Skills that serve it:** internal-linking, sitemaps, seo-migration
 
 ## Social and open-graph
 - **What:** The meta tags (Open Graph and Twitter Card) that control how a page renders when its URL is shared — title, description, image, and canonical URL in the preview card on social networks and messaging apps.
@@ -1636,4 +1648,6 @@ The 20 types below are business-function types (what a client asks for), drawn f
 - Method: every element's "Skills that serve it" line was extracted by script and diffed against the 227-skill catalog in MASTER_BRIEF.md §3.12, in both directions.
 - Result at Phase 0 exit: 227/227 skills trace to at least one element; 127/127 elements name at least one serving skill; 0 orphans in either direction.
 - The first pass (68 elements, the §4-named set only) left 74 skills untraced — all of D3, D17, D18 plus depth skills — which is why Parts 7–9 and 11–12 exist: the brief's element list is a floor, and the research found what it does not name.
+
+**Phase 8 addendum (2026-11-21, v1.1.0):** the catalog has since grown to **235 skills / 128 elements**. Phase 8's debater stage assigned anatomy elements to all 8 new hybrid-mission skills and added one new element — **Market expansion** (serving `market-expansion`) — bringing the element count from 127 to 128; `SKILLS_INDEX.md` was regenerated with zero "no anatomy element" warnings. This addendum records the growth only; the Phase 0 traceability record above stands unaltered as the Phase 0 exit result.
 

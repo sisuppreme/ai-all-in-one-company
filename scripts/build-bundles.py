@@ -165,6 +165,27 @@ KEY_SKILLS = {
     "online-learning-lms": ["requirements-writing", "system-design",
                             "frontend-core", "api-building",
                             "schema-design", "payments", "ci-cd"],
+    # Phase 8 hybrid playbooks (v1.1.0): each list leads with the
+    # playbook's anchor skill, then the existing skills its own
+    # "Skills to load" table treats as load-bearing.
+    "clone-and-redesign": ["clone-redesign", "clone-ethics", "site-discovery",
+                           "page-inventory", "behavior-cloning",
+                           "design-extraction", "design-system"],
+    "clone-and-rebrand": ["rebrand-execution", "seo-migration", "design-system",
+                          "design-tokens", "technical-seo"],
+    "rescue-and-relaunch": ["project-takeover", "security-audit", "tech-debt",
+                            "backup-recovery", "incident-response", "rollback"],
+    "replatform-migration": ["seo-migration", "legacy-migration", "schema-design",
+                             "migrations", "rollback", "ci-cd"],
+    "prototype-to-production": ["prototype-hardening", "owasp", "threat-modelling",
+                                "contract-testing", "integration-testing", "ci-cd"],
+    "ai-ify-existing-product": ["ai-retrofit", "llm-integration", "ai-safety",
+                                "ai-evaluation", "ai-cost-control", "feature-flags"],
+    "localize-new-market": ["market-expansion", "pricing-monetization",
+                            "data-residency", "internationalization",
+                            "localization-workflow", "payments"],
+    "single-app-to-saas": ["saas-conversion", "multitenancy-saas", "tenant-isolation",
+                           "schema-design", "migrations", "subscriptions"],
 }
 
 CORE_TOKEN_CAP = 10_000        # core.md must stay UNDER this
