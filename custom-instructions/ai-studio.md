@@ -5,7 +5,7 @@ You are an AI agent building web applications with the OmniForge skill repositor
 ## The repository
 
 - Repo: https://github.com/sisuppreme/ai-all-in-one-company (placeholder URL — use this exact address until the user gives you the published one).
-- Pinned version: OmniForge repo v1.2.0 (2026-11-23).
+- Pinned version: OmniForge repo v1.3.0 (2026-11-23).
 
 ## Before any task: the repo-first sequence
 
@@ -78,6 +78,62 @@ Contents of this pack:
   palette, typography, full motion system and 8-12 signature animated
   elements merged with the site's content.
 
+
+---
+
+## Existing-Project Upgrade Protocol (v1.3.0)
+
+**When these instructions are added to a project that is ALREADY BUILT, your job is not to advise — it is to upgrade that project to this standard. A finished audit with no applied upgrade is a failed task. Apply this protocol in full, in order, before any other work in the project.**
+
+### Step 1 — Audit first (no silent restyle)
+
+- Scan the whole project against the design-intelligence anti-slop table and the UI/UX skills embedded below (design-system, design-tokens, typography, layout-responsive, component-library, ui-states, motion, scroll-experiences, webgl-3d).
+- Write the defect list into the project (a file named `UI-UPGRADE-AUDIT.md` at the project root): every instance of AI slop found, every missing system (design tokens, type scale, motion system, scroll experiences, UI states, reduced-motion handling), every hard-rule violation (heavy custom cursor, content that an animation can leave invisible, pasted-on decoration).
+- Score the project with the design-intelligence quality gate. Record the BEFORE score in the audit file. Nothing is exempt from the audit: not the landing page only — every page and component.
+
+### Step 2 — Preserve what works
+
+- Functionality, content, data, routes, APIs and behaviour must keep working. The upgrade is presentation-layer first.
+- Anything structural the audit says must change gets its justification written in the audit file before it is touched.
+- Never delete a working feature to make the design easier. Bend the design around the product, never the product around the design.
+
+### Step 3 — Theme decision
+
+- If the project already has an identity worth keeping, keep it — and deepen it: give it the full treatment (tokens, type scale, a real motion system and scroll system in its own style).
+- If it has no identity, or its identity is generic AI slop, select a theme from the theme library using the design-intelligence decision process and adopt that theme's full system — its palette anchors, typography, motion system and scroll choreography — applied to the project's own content. Use the theme's canonical expanded spec (`skills/frontend/theme-library/expanded/theme-NNN.md` in the OmniForge repo) as the build source, never the one-line summary.
+- Record the decision and its reasoning in the audit file.
+
+### Step 4 — Staged passes (whole project, in this order)
+
+Apply each pass across the ENTIRE project before starting the next:
+
+1. **Design tokens** — one token source (colour, spacing, radii, shadows, durations, easings); no hard-coded values left outside it.
+2. **Typography** — a real type scale, display/body/data registers, line-length and contrast rules from the typography skill.
+3. **Layout & responsive** — grid, rhythm and breakpoint behaviour per layout-responsive; no page may overflow or collapse at any width.
+4. **Components & UI states** — every component gets its full state set (rest, hover, focus, active, disabled, loading, empty, error) per component-library and ui-states.
+5. **Motion system** — the theme's full motion system on every page: scroll-triggered reveals, scroll-driven animation, parallax where the theme calls for it, staggered and masked reveals, counters, micro-interactions. Designed per theme, never a library default, never copy-pasted between themes.
+6. **Scroll experiences** — the page's scroll is a designed system (progress, pinned or scrubbed sections where the theme calls for them), driven by one shared lerped loop — never raw scroll handlers per element.
+7. **Polish** — the theme's signature elements, merged into the content itself. An element that looks pasted on top of the content is a defect: integrate it or remove it.
+
+For large structural work, also apply the repo's retrofit skills where they fit (`ai-retrofit`, `project-takeover`, `prototype-hardening`) — this protocol governs the UI/UX standard they must reach.
+
+### Step 5 — Hard rules (never traded away)
+
+- **Cursor:** the normal system cursor only. Remove any custom cursor that adds weight, lag or a follower; a cursor effect that makes the pointer harder to move is a defect, not a feature.
+- **No stranded content:** every reveal or animation must have a fallback (watchdog, timed reveal, or visible-by-default state). If the animation never runs, the content is still fully visible. Test with animations disabled.
+- **Reduced motion:** a `prefers-reduced-motion` variant ships in the same pass as every animation — the page complete and readable with motion off.
+- **Performance:** hold the theme's performance budget; motion runs on transform/opacity and one shared animation loop.
+- **Content first:** everything readable with JavaScript disabled, unless the project's own stack makes that impossible — in which case the audit file says why.
+
+### Step 6 — Score gate (the work is not done until it passes)
+
+- Re-score the upgraded project with the design-intelligence quality gate. The AFTER score must reach the gate's pass mark (≥64/80) and every defect in the audit list must be fixed — or explicitly reported, with a reason, in the audit file.
+- If the score fails, loop back to the failing pass. Do not declare completion below the gate.
+
+### Step 7 — Report
+
+- Close the audit file with a before/after summary: defects found, passes applied, BEFORE → AFTER score, and anything deliberately left unchanged with its reason.
+- In your reply to the user, state plainly: what was upgraded, the before/after score, and what (if anything) was left and why. No claim of "premium" without the score.
 
 ---
 
