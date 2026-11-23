@@ -43,6 +43,39 @@
 - **G-FE-013 — System trace audit.** Verifies: FE-021, FE-022, FE-024. Check: automated + manual — sample 10 styled elements per page and resolve each to a token, a library component, or a logged exception; confirm the system changelog has an entry for every token/component change in the release. Pass: 10 of 10 trace, changelog complete. Fail: block until drift is absorbed or removed. Recorded in: progress.md.
 - **G-FE-014 — Token and contrast enforcement.** Verifies: FE-022 (via design-tokens). Check: automated — the design-tokens gates run as this skill's enforcement arm: token-literal lint and the semantic-pair contrast script (G-FE-022, G-FE-023). Pass: both green. Fail: block shipment. Recorded in: progress.md.
 
+## Intelligence — decisions & gates
+
+> **Judgment layer.** These decisions apply the judgment layer above this skill — `skills/frontend/design-intelligence/SKILL.md` and the theme library (`skills/frontend/theme-library/`). Settle the theme's art direction there first, then decide here inside it; where a decision below and a rule above disagree, the rule above wins.
+
+### Decision rules — governing the system
+
+| Decision | Read the situation | Decide |
+|---|---|---|
+| How much system to build first | Content still changing, one surface | Ship the core only — color, type, and spacing tokens plus 8–12 components — and grow by evidence, not speculation. |
+| How much system to build first | Three or more surfaces share components | Invest in full variant and state matrices up front; inconsistency costs more than the build. |
+| How expressive the system may be | Audience needs trust first (finance, health, regulated) | Restraint: fewer display devices, proof-led composition; expression lives in typography and imagery, not decoration. |
+| How expressive the system may be | Consumer or creative brand | Choose one signature device and carry it in the tokens, so every page inherits it instead of inventing its own (FE-029). |
+| Where saturated color may live | Data-heavy product | Reserve saturation for data and status semantics; brand color stays quiet so meaning stays legible. |
+| Where saturated color may live | Editorial or marketing surface | Wider neutrals with one accent; imagery and type carry the temperature. |
+| Which imagery style to standardize | What the business can actually supply, week after week | Standardize the style the team can sustain (FE-030); a style abandoned after launch is worse than a plainer one that holds. |
+| How many exceptions a page may carry | Page type | Campaign and landing pages may hold more logged exceptions; core product flows hold near zero (FE-022). A third exception of one kind becomes a token or a component. |
+
+### Self-check gate
+
+- **G-FE-015 — Pre-ship intelligence self-check (design-system).** Verifies: FE-021, FE-022, FE-025, FE-029, FE-030 as judgment, not just compliance. Check: manual — the builder scores each item pass/fail against the shipped pages: (1) ★ every visual choice on the page traces to a token, a component, or a logged exception; (2) ★ the page's distinctiveness can be named in one sentence, and it matches the brief; (3) composition differs by section role — no two adjacent sections share padding, alignment, and loudest element; (4) the loudest element in each section is the message's proof, not a default heading; (5) imagery depicts the real business in the one documented style; (6) the footer reads as a designed brand surface, not a pasted link grid. Pass: both ★ items pass and at least 5 of 6 overall. Fail: fix, or log a written exception, before shipping. Recorded in: progress.md.
+
+### Anti-pattern table — symptom → cause → fix
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Every new page needs a new shade or size | Palette and scales were defined as raw values, never as semantic roles | Define roles (surface, action, emphasis, danger) in design-tokens; pages consume roles, not values. |
+| Two surfaces under one brand look unrelated | The system documented components but never composition or voice | Brief distinctiveness (FE-029) and record composition per content role (FE-025). |
+| Builders keep asking "which one do I use?" | Near-duplicate components accumulated without refusal guidance | Merge into variants of one component; write the "do not use when" case (FE-023). |
+| A brand refresh breaks pages unpredictably | Untraceable one-off styling absorbed the change unevenly | Run the trace audit (G-FE-013); absorb or remove drift before refreshing. |
+| The system is complete and documented, yet pages still look generic | Tokens encode only safe defaults; no signature device was ever chosen | Choose one brand device — type voice, imagery style, or layout motif — and encode it in tokens and components (FE-029). |
+| Consumers are surprised by system changes | Changes shipped silently or unversioned | Version every change with a changelog entry and a visual-regression pass (FE-024). |
+| The exception log grows every milestone | The system lacks a pattern pages genuinely need, so pages route around it | Promote the third exception of a kind into the system, or remove the need (FE-022). |
+
 ## Anti-patterns
 
 - **The system that is a screenshot.** A Figma frame or a "brand" page exists, but pages are styled ad hoc and nothing traces back to it. Catch it: run the trace audit (G-FE-013); untraceable elements are the system failing, not the page.

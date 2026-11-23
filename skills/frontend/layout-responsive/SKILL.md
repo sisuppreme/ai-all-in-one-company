@@ -44,6 +44,40 @@
 - **G-FE-063 — Target-size audit.** Verifies: FE-124. Check: automated — a script reads computed sizes of all interactive elements at 390px and fails any below 24×24 CSS px. Pass: zero undersized targets. Fail: warn; a primary action below the floor blocks. Recorded in: progress.md.
 - **G-FE-064 — Resize walk.** Verifies: FE-122, FE-127. Check: manual — drag the viewport continuously from 320px to 1920px on the main pages, watching for overlap, orphaned controls, and unreadable line lengths between breakpoints. Pass: no failure at any intermediate width. Fail: warn and log the failing width range. Recorded in: progress.md.
 
+## Intelligence — decisions & gates
+
+> **Judgment layer.** These decisions apply the judgment layer above this skill — `skills/frontend/design-intelligence/SKILL.md` and the theme library (`skills/frontend/theme-library/`). Settle the theme's art direction there first, then decide here inside it; where a decision below and a rule above disagree, the rule above wins.
+
+### Decision rules — composing layout
+
+| Decision | Read the situation | Decide |
+|---|---|---|
+| Layout model | Editorial content | A measure-led single column with deliberate breakout media; the reading line is the layout. |
+| Layout model | Product or app surface | A grid with persistent navigation and stable regions; users build a spatial map and resent it moving. |
+| Layout model | Gallery or portfolio | A fluid grid keyed to media aspect ratios, not to a card template. |
+| How many breakpoints | Content complexity | One breakpoint per named layout change (FE-122); two well-placed beats three guessed at device widths. |
+| Mobile priority order | The audience's primary task | The primary task's content and action come first; proof and secondary material move below — never raw DOM order (FE-123). |
+| Density | Expert desktop users vs consumer mobile-first audience | Experts may get denser grids; consumer small screens get generous targets and air (FE-124). Density is an audience decision, not a taste. |
+| Wide-screen behavior | Content role at 1600px+ | Reading measure stays capped; media and data may use the width. Prose stretched to the viewport edge is a defect (FE-126, FE-127). |
+| Sticky elements | Whether the element serves the primary task at that width | At most one sticky element per viewport; on small screens a sticky element must earn its scarce height or scroll away. |
+| Wide-table strategy | Data shape | Few columns: reformat with priority columns. Many columns: contained scroll region with a sticky first column (FE-130). Never page overflow, never silent truncation. |
+
+### Self-check gate
+
+- **G-FE-065 — Pre-ship intelligence self-check (layout).** Verifies: FE-122, FE-123, FE-126, FE-127, FE-131 as judgment, not just compliance. Check: manual — the builder scores each item pass/fail on the shipped pages: (1) ★ a continuous resize walk from 320px to 1920px shows no breakage at any in-between width; (2) ★ at 390px the content order is the priority order, not the desktop DOM order; (3) nothing essential is unreachable at small widths; (4) gaps between sibling sections all come from the spacing scale — no eyeballed one-offs; (5) at wide viewports prose holds its measure while media and data use their own widths; (6) at most one sticky element is visible per viewport. Pass: both ★ items pass and at least 5 of 6 overall. Fail: fix, or log a written exception, before shipping. Recorded in: progress.md.
+
+### Anti-pattern table — symptom → cause → fix
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Grid monotony — every section is the same three-column card grid | One layout pattern reused for every content role | Assign composition per role: prose, proof, gallery, and data each get their own structure (FE-126; design-system FE-025). |
+| Spacing chaos — sibling sections are separated by 13px here, 41px there | Spacing set per component by eye; no shared rhythm | Take every gap from the spacing scale (design-tokens) and audit sibling gaps side by side. |
+| Breakpoint afterthoughts — the layout breaks at widths nobody tested, between the "official" sizes | Breakpoints placed at device sizes and checked only at those sizes | Place breakpoints where content breaks (FE-122) and run the resize walk (G-FE-064). |
+| The squeezed desktop — the phone view is the desktop page at 40% scale | Compression substituted for recomposition | Recompose by priority; re-decide type, targets, and order for small screens (FE-123). |
+| The hero eats the page — content starts below the fold on short screens, CTA clipped | Fixed viewport height chosen as a style | `min-height` sized by content, CTA always in flow (FE-125). |
+| Container tyranny — galleries and tables squeezed into the prose column | A single container width governing every role | Width tokens per content role (FE-126). |
+| Sticky pile-up — nav, banner, and CTA bar consume half the phone screen | Each feature added its own sticky element in isolation | One sticky element per viewport; the rest scroll away. |
+
 ## Anti-patterns
 
 - **The 768 stack.** One `max-width: 768px` query stacks everything in DOM order and calls it the mobile design. Catch it: if the mobile order is the desktop order, no recomposition happened (FE-123).

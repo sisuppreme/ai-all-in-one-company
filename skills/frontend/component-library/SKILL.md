@@ -42,6 +42,39 @@
 - **G-FE-033 — Duplicate-markup grep.** Verifies: FE-070. Check: automated — grep page code for raw `<button`/`<input`/`<select` markup duplicating a library component, and for icon imports outside the library's single set (FE-064). Pass: zero hits. Fail: block until the page uses the library. Recorded in: progress.md.
 - **G-FE-034 — Icon and badge audit.** Verifies: FE-064, FE-065, FE-068. Check: manual + automated — scan headings and feature lists for emoji codepoints (automated); screenshot all icons in one view to check stroke weight and metaphor consistency; count badges per viewport and name the action each enables. Pass: no structural emoji, one icon style, every badge actionable. Fail: warn; block if emoji carry a feature list. Recorded in: progress.md.
 
+## Intelligence — decisions & gates
+
+> **Judgment layer.** These decisions apply the judgment layer above this skill — `skills/frontend/design-intelligence/SKILL.md` and the theme library (`skills/frontend/theme-library/`). Settle the theme's art direction there first, then decide here inside it; where a decision below and a rule above disagree, the rule above wins.
+
+### Decision rules — growing the library
+
+| Decision | Read the situation | Decide |
+|---|---|---|
+| New component or new variant | What actually differs | Emphasis, size, or content only: a variant. Behavior or anatomy differs: a new component. |
+| When to abstract | Evidence of reuse | First real use may stay page-level; the second use is the signal to build the library component; a third page-level copy is a defect (FE-070). |
+| Variant budget | Whether the variants can still be enumerated | Past roughly six variants, the design is asking for two components — split by purpose rather than adding a seventh. |
+| Content model | The product's real data | Design and stress-test against the longest real names and labels the product holds, including other shipped languages (FE-066). |
+| Icon treatment | The component's context | Dense UI (nav, toolbars): icons carry meaning and may stand alone. Marketing: icons support specific copy, never replace it (FE-064, FE-065). |
+| Card weight | Whether the content is genuinely parallel | Parallel items get equal cards; unequal importance gets a featured, wider, or richer treatment (FE-069). |
+| Destructive styling | The action's risk | Destructive actions get a distinct treatment and a confirmation pattern; they are never styled as primary (FE-067). |
+| Badge use | Whether the user can act on it | A badge ships only if it states something actionable — a status, genuine novelty, a filter (FE-068). Decorative badges are removed. |
+
+### Self-check gate
+
+- **G-FE-035 — Pre-ship intelligence self-check (components).** Verifies: FE-062, FE-064, FE-066, FE-067, FE-068, FE-070 as judgment, not just compliance. Check: manual — the builder scores each item pass/fail against the library: (1) ★ every component has a story per variant and per applicable state, or a written exception in its state matrix; (2) ★ the longest real content the product holds renders in every text-bearing component without overflow or clipping; (3) every component in the library has a second real use, present or concretely planned — single-use components are demoted to page code; (4) a new hire could enumerate each component's variants from its documentation alone; (5) every badge on the page names an action the user can take; (6) destructive actions are visually distinct from, and never styled as, primary actions. Pass: both ★ items pass and at least 5 of 6 overall. Fail: fix, or log a written exception, before shipping. Recorded in: progress.md.
+
+### Anti-pattern table — symptom → cause → fix
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Component soup — forty components, half of them used exactly once | Abstraction on first use, with no reuse evidence | Demote single-use components to page code; a library entry requires a second real use. |
+| Variant explosion — the button has fourteen variants nobody can list | Every page request was granted a variant instead of a decision | Cap the variants, split by purpose, and document each variant's "do not use when" (design-system FE-023). |
+| State gaps debut in production — disabled and loading states are broken in the app, fine in the mockups | Stories were built for default and hover only | Ship the full state set or a written exception (FE-062); check coverage against stories (G-FE-032). |
+| Placeholder-perfect, real-content broken — cards clip the longest customer name | Components were tested with "John Doe" and lorem ipsum | Stress stories with the longest real content (FE-066). |
+| Lookalike duplication — pages hand-roll near-copies of library components | The library component almost fit, so the page team routed around it | Extend the component; find imitations with the grep gate (G-FE-033). |
+| Prop sprawl — a component takes twenty props and behaves unpredictably in combination | Configuration was used to avoid making design decisions | Decide variants; props carry content, not layout personalities. |
+| Mixed iconography — two stroke weights and two metaphor styles across pages | Icons imported ad hoc, per page and per component | One set, one stroke weight (FE-064); audit with G-FE-034. |
+
 ## Anti-patterns
 
 - **The near-duplicate folder.** `Card`, `CardNew`, `PricingCard2`, and `FeatureCardOld` coexist because extending the original felt risky. Catch it: inventory the library at review; duplicates merge into variants of one component or are deleted.

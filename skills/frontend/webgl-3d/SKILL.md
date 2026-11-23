@@ -41,6 +41,39 @@
 - **G-FE-153 — Low-end frame profile.** Verifies: FE-305, FE-309. Check: manual — profile the scene on a low-end phone (or throttled equivalent): sustained frame rate holds the project's budget with quality scaling engaged, and the render loop pauses when the canvas leaves the viewport. Pass: budget held for a full interaction session. Fail: warn, fix before release. Recorded in: progress.md.
 - **G-FE-154 — Reduced-motion emulation check.** Verifies: FE-307. Check: automated — Playwright with `prefers-reduced-motion` emulated loads the scene; assert no auto-rotation or camera animation runs, and the static view still shows the product. Pass: scene is still and complete. Fail: block shipment. Recorded in: progress.md.
 
+## Intelligence — decisions & gates
+
+> **Judgment layer.** These decisions apply the judgment layer above this skill — `skills/frontend/design-intelligence/SKILL.md` and the theme library (`skills/frontend/theme-library/`). Settle the theme's art direction there first, then decide here inside it; where a decision below and a rule above disagree, the rule above wins.
+
+### Decision rules — placing 3D
+
+| Decision | Read the situation | Decide |
+|---|---|---|
+| Whether 3D at all | Whether a photograph or 2D graphic conveys the same thing at equal clarity | If it does, ship 2D. 3D earns its place for inspection (rotate, zoom), configuration, or genuinely spatial data — nothing else. |
+| Interactivity level | The audience's task | Shoppers configuring a product: full orbit plus live variants. Casual visitors: a constrained, well-chosen presentation with optional drag. Data stories: a guided camera the user can take over. |
+| Realism budget | What the scene must prove | Commerce: the product must look like itself — materials taken from its real surfaces. Editorial or data: stylized rendering is acceptable when it stays honest about what it represents. |
+| Performance tier | The audience's actual devices | Mobile-heavy or emerging-market audience: aggressive DPR caps and low-poly defaults. Desktop professional audience: higher fidelity — with quality scaling still engaged (FE-305). |
+| Camera behavior | The content's job | Product viewer: user-controlled, damped, angle-limited — never under the floor. Hero: one slow, deliberate move that settles within 1.5s (FE-310). |
+| Fallback investment | How much traffic may lack WebGL | The larger that share (old devices, locked-down browsers), the more art direction the fallback still deserves — it is a designed image, not an apology (FE-302). |
+| Lighting and materials | The product's real context | Light and surround the scene as the product is actually met — studio, desk, street — never a void with a floating object (FE-303). |
+
+### Self-check gate
+
+- **G-FE-155 — Pre-ship intelligence self-check (WebGL/3D).** Verifies: FE-302, FE-303, FE-304, FE-305, FE-307, FE-309 as judgment, not just compliance. Check: manual — the builder scores each item pass/fail on the shipped scene: (1) ★ with WebGL disabled, the page still delivers its full message through the fallback; (2) ★ the delete test passes — removing the canvas would remove information or capability, not just decoration; (3) a low-end profile holds the frame budget with quality scaling engaged; (4) the rendered scene shows zero GL tells — key light with a shadow side, surface-true materials, a chosen camera; (5) under reduced-motion emulation the camera is still and the view complete; (6) the render loop pauses offscreen and a lost context restores the scene or the fallback, never a frozen frame. Pass: both ★ items pass and at least 5 of 6 overall. Fail: fix, or log a written exception, before shipping. Recorded in: progress.md.
+
+### Anti-pattern table — symptom → cause → fix
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Effect pasted over content — a 3D scene floats beside copy it has no relationship to | 3D was added as decoration after the page was designed | The scene must carry its section's message and sit inside the layout's structure; if removing it loses nothing, remove it (FE-304, BAN-FE-151). |
+| Performance collapse — 60fps in the demo, under 20fps on the audience's phones | Profiled only on the development GPU; DPR uncapped; geometry heavier than the scene needs | Cap DPR, scale quality to capability, and profile on a low-end device (FE-305, FE-309, G-FE-153). |
+| No fallback — WebGL blocked or unsupported leaves an empty box | The fallback was treated as optional polish and cut under deadline | Build the fallback first (FE-302) and prove it with the WebGL-disabled run (G-FE-151). |
+| Engine-default look — flat light, plastic materials, dead-center camera | A starter example shipped with the demo object swapped for the product | Key light with shadows, materials matched to real surfaces, a deliberate camera (FE-303, BAN-FE-152). |
+| Battery bonfire — the scene renders all day in background tabs and offscreen | The render loop never checks visibility | Pause offscreen and when hidden; render on demand where the scene allows it (FE-306). |
+| Motion-sickness camera — swooping auto-orbits and fly-throughs nobody asked for | Camera animation used as default ambience | Settle within 1.5s, then hand control to the user; reduced motion means still (FE-307, FE-310). |
+| Context-loss freeze — a GPU reset leaves a frozen frame on the page forever | `webglcontextlost` and `webglcontextrestored` were never handled | Handle both events explicitly: restore the scene or fall back, never freeze (FE-306). |
+| Canvas as a black box — screen readers get nothing and keyboard users can't reach the controls | The canvas was treated as pure decoration | Text alternative describing the scene, and keyboard-operable controls (FE-308). |
+
 ## Anti-patterns
 
 - **The dev-machine demo.** The scene is buttery on the author's GPU laptop and a slideshow on a mid-range phone. Catch it: if no low-end profile exists, FE-309 was skipped — the demo proves nothing.

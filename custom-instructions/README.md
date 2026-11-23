@@ -2,7 +2,7 @@
 
 This folder holds one ready-to-paste instruction set per platform. Paste **one** file — the one for your platform. This README itself is never pasted anywhere; it records where each set lives on its platform, whether it persists, its size limit, and how to refresh it when the repo releases a new version.
 
-All four sets encode the same repo-first protocol and are pinned to **OmniForge repo v1.1.0 (2026-11-21)**. The repo URL in every set (https://github.com/sisuppreme/ai-all-in-one-company) is a placeholder until the repo is published; when the final URL is known, it changes in the repo first and the pasted copies are refreshed from the repo (see the update procedure below).
+All four sets encode the same repo-first protocol and are pinned to **OmniForge repo v1.2.0 (2026-11-23)**. As of v1.2.0 (the theme-library release), all four sets also carry the premium design standard: the frontend theme library is loaded before any website UI is built, the motion and scroll-experiences premium standard applies in full, and the standing design rules (system cursor only, reveals never leave content invisible, elements merged with content, smoothed scroll motion, `prefers-reduced-motion` honoured, "premium beyond premium" bar) are stated in each set. The repo URL in every set (https://github.com/sisuppreme/ai-all-in-one-company) is a placeholder until the repo is published; when the final URL is known, it changes in the repo first and the pasted copies are refreshed from the repo (see the update procedure below).
 
 ## Per-platform notes
 

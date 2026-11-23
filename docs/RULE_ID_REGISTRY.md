@@ -62,6 +62,8 @@ Assignment scheme (DECISIONS D-012): within each department, skills in catalog o
 | data-visualisation | FE-261–FE-280 | G-FE-131–FE-140 | BAN-FE-131–FE-140 |
 | pwa-offline | FE-281–FE-300 | G-FE-141–FE-150 | BAN-FE-141–FE-150 |
 | webgl-3d | FE-301–FE-320 | G-FE-151–FE-160 | BAN-FE-151–FE-160 |
+| design-intelligence | FE-321–FE-340 | G-FE-161–FE-170 | BAN-FE-161–FE-170 |
+| theme-library | FE-341–FE-360 | G-FE-171–FE-180 | BAN-FE-171–FE-180 |
 
 ## D4 — backend (BE)
 
