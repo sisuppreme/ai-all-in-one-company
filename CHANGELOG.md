@@ -2,6 +2,35 @@
 
 All notable changes to this repository are recorded in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] — 2026-11-24
+
+### Added
+
+- `ui-ux-upscaler` skill: upgrades an existing application's UI to the premium standard — audit, staged passes, leak gate, score gate — bringing the total from 237 to 238 skills, with 11 specs, 3 worked examples, a playbook, and a bundle.
+- Architecture-Leak Rule as a hard, fail-closed gate in all 4 custom-instruction files (FE-369–FE-371, BAN-FE-186/187, G-FE-186/187): no DB names/types, table/collection names, page/route counts or structures, API endpoints, internal module/service names, tech-stack labels, or schema/field names on any user-facing surface. Any leak is a gate FAIL; target leak score zero.
+- Repo-Use Enforcement in all 4 custom-instruction files (FE-381–FE-384, G-FE-191, BAN-FE-191): read the named skill files before generating, fail-closed stop if a required skill cannot be read, and an attestation block (repo version, skills read, rules applied with exact `file:line` evidence) in `progress.md` and in the reply.
+- The `ui-ux-upscaler` skill embedded in full in all 4 custom-instruction files.
+- README rewritten in detail: all 238 skills and all 100 themes listed, full 19-rank precedence order, per-platform quick start, Agensi packs, and quality evidence.
+
+### Fixed
+
+- The repo URL in every custom-instruction file no longer says "(placeholder URL until the repo is published)" — the repository has been public since 2026-11-21.
+- README version note, stale counts, and the duplicated "Detection first: see above." bullet fixed; Agensi Packs 3–5 now honestly show "no public URL yet" instead of an empty Link column.
+
+## [1.3.0] — 2026-11-23
+
+### Added
+
+- Existing-Project Upgrade Protocol in all 4 custom-instruction files: audit first, staged passes, score gate (design-intelligence gate, AFTER score ≥ 64/80, every audit defect fixed or explicitly reported).
+
+## [1.2.0] — 2026-11-23
+
+### Added
+
+- `design-intelligence` skill: art-direction decision systems, self-critique quality gates, anti-slop symptom → cause → fix detection, adaptation by brand/audience/content type, worked reasoning examples.
+- `theme-library` skill: 100 completely original premium themes, each expanded to the full 50x standard (235 → 237 skills).
+- Premium rewrites of the `motion` and `scroll-experiences` skills: the positive premium-craft standard, replacing the previous bans-only text.
+
 ## [1.1.0] — 2026-11-21
 
 ### Added

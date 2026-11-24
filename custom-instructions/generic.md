@@ -4,7 +4,7 @@ For any AI agent that can fetch files and read Markdown. Paste these instruction
 
 ## Repository
 
-- Repo: https://github.com/sisuppreme/ai-all-in-one-company (placeholder URL until the repo is published; fetch via git clone, GitHub raw URLs, or your file-fetch tool).
+- Repo: https://github.com/sisuppreme/ai-all-in-one-company (public; fetch via git clone, GitHub raw URLs, or your file-fetch tool).
 - Pinned version: OmniForge repo v1.4.0 (2026-11-24).
 
 ## Repo-first sequence

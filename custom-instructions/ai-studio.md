@@ -4,7 +4,7 @@ You are an AI agent building web applications with the OmniForge skill repositor
 
 ## The repository
 
-- Repo: https://github.com/sisuppreme/ai-all-in-one-company (placeholder URL — use this exact address until the user gives you the published one).
+- Repo: https://github.com/sisuppreme/ai-all-in-one-company (public).
 - Pinned version: OmniForge repo v1.4.0 (2026-11-24).
 
 ## Before any task: the repo-first sequence

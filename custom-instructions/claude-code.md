@@ -4,7 +4,7 @@ Add this file's contents to the project's `CLAUDE.md` (or paste it at the start 
 
 ## Repository
 
-- Repo: https://github.com/sisuppreme/ai-all-in-one-company (placeholder URL until the repo is published — use this exact address until the user provides the final one).
+- Repo: https://github.com/sisuppreme/ai-all-in-one-company (public).
 - Pinned version: OmniForge repo v1.4.0 (2026-11-24).
 
 ## At the start of every task

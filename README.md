@@ -1,4 +1,4 @@
-# OmniForge — ai-all-in-one
+# OmniForge — ai-all-in-one-company
 
 **A company in a repository.**
 
@@ -10,7 +10,7 @@ OmniForge packages the working knowledge of a complete web-application company �
 - **Custom-instructions pin:** **v1.4.0 (2026-11-24)** — the pin carried by all four files in [`custom-instructions/`](custom-instructions/)
 - **Content verified on disk:** 2026-11-24 — `scripts/validate-skills.py`: **Checked 238 skills. ALL PASS**
 
-> **Version note (read this first).** The `VERSION` file and `CHANGELOG.md` still record **v1.1.0** — no formal version bump has been recorded for the work landed after it. The content in this repository is newer than that file: the custom-instructions pin is v1.4.0 (2026-11-24), and every count in this README was verified against the files on disk on 2026-11-24. The "What's new" section below records what each step after v1.1.0 actually added, so nothing here depends on the stale `VERSION` file.
+> **Version: 1.4.0 (2026-11-24).** `VERSION` and `CHANGELOG.md` record the same version, and the custom-instructions files are pinned to it. Every count in this README was verified against the files on disk on 2026-11-24.
 
 ## Contents
 
@@ -21,6 +21,7 @@ OmniForge packages the working knowledge of a complete web-application company �
 - [Quick start — use it on your platform](#quick-start--use-it-on-your-platform)
 - [How a project runs](#how-a-project-runs)
 - [The 18 departments and all 238 skills](#the-18-departments-and-all-238-skills)
+- [Detection parameters — the 203 tells](#detection-parameters--the-203-tells-not-skills)
 - [The premium design standard](#the-premium-design-standard)
 - [Theme library — 100 original themes](#theme-library--100-original-themes)
 - [UI/UX Upscaler — upgrade an existing app](#uiux-upscaler--upgrade-an-existing-app)
@@ -61,7 +62,7 @@ Every skill follows one memory-proof format:
 | Playbooks | **22** — 13 by app type + 8 hybrid missions + 1 UI/UX upscaler | `playbooks/` |
 | Bundles | **45 files** — always-on core, 21 department bundle files, 22 playbook bundles, plus reference-only `ALL_SKILLS.md` | `bundles/` |
 | Gates | **69** acceptance gates + **10**-gate skill-release QA protocol (G-QA-01…10), plus at least 3 gates inside every skill | `gates/`, `skills/` |
-| Worked examples | **715** before/after example files (3 per skill; `vector-db` carries a fourth) + 18 department example documents | `skills/*/examples/`, `examples/` |
+| Worked examples | **715** before/after example files (3 per skill; [`vector-db`](skills/database/vector-db/SKILL.md) carries a fourth) + 18 department example documents | `skills/*/examples/`, `examples/` |
 | Premium themes | **100** fully expanded theme specifications | `skills/frontend/theme-library/expanded/` |
 | Cross-department contracts | **14** | `docs/contracts/` |
 | Tracked files in the repo | **1,290** | whole repository |
@@ -72,6 +73,7 @@ Every skill follows one memory-proof format:
 ### v1.4.0 — 2026-11-24 — hard leak gate + repo-use enforcement (custom-instructions pin)
 
 - **Architecture-Leak Rule — hard gate, fail-closed.** An application's structure must never leak into its UI: no DB names/types, table/collection names, page/route counts or structures, API endpoints, internal module/service names, tech-stack labels, or schema/field names on any user-facing surface. Any leak in the shipped UI is a gate FAIL, whatever the design score is. Target leak score: **zero**.
+- **[`ui-ux-upscaler`](skills/frontend/ui-ux-upscaler/SKILL.md) skill** (new): upgrades an existing application's UI to the same premium standard — audit, staged passes, leak gate, score gate (237 → 238 skills).
 - **Repo-Use Enforcement (FE-381–FE-384, G-FE-191, BAN-FE-191).** The agent must read the named skill files from the repo *before* generating anything, stop (fail-closed) if a required skill cannot be read, and carry an attestation block in `progress.md` and in its reply — repo version, skills read, and every rule applied with its exact `file:line` evidence. A UI task's attestation must also name the theme and its canonical expanded spec, the design-intelligence gate score, and the AFTER leak score.
 - **UI/UX Upscaler skill embedded in all 4 platform files**, so the leak gate cites a skill the instruction file actually contains.
 
@@ -79,17 +81,18 @@ Every skill follows one memory-proof format:
 
 - A staged upgrade protocol added to all 4 platform files: audit first, staged passes, score gate (design-intelligence gate, AFTER score ≥ 64/80, every audit defect fixed or explicitly reported).
 
-### The 100-theme premium library — 2026-11-23
+### v1.2.0 — 2026-11-23 — 100-theme premium library
 
-- **`design-intelligence` skill** (new): art-direction decision systems, self-critique quality gates, anti-slop symptom → cause → fix detection, adaptation by brand/audience/content type, worked reasoning examples.
-- **`theme-library` skill**: **100 completely original premium themes**, each expanded to the full 50x standard — per-element build specs, choreography timelines, state matrices, breakpoint behaviour, edge cases, accessibility, tokens, worked examples, scroll choreography map, performance budget, build order.
-- **Premium rewrites of `motion` and `scroll-experiences`**: the old skills were written almost entirely as bans/restraint — they stopped bad motion but contained no positive premium-craft standard. They now carry the positive standard too.
+- **[`design-intelligence`](skills/frontend/design-intelligence/SKILL.md) skill** (new): art-direction decision systems, self-critique quality gates, anti-slop symptom → cause → fix detection, adaptation by brand/audience/content type, worked reasoning examples.
+- **[`theme-library`](skills/frontend/theme-library/SKILL.md) skill**: **100 completely original premium themes**, each expanded to the full 50x standard — per-element build specs, choreography timelines, state matrices, breakpoint behaviour, edge cases, accessibility, tokens, worked examples, scroll choreography map, performance budget, build order.
+- **Premium rewrites of [`motion`](skills/frontend/motion/SKILL.md) and [`scroll-experiences`](skills/frontend/scroll-experiences/SKILL.md)**: the old skills were written almost entirely as bans/restraint — they stopped bad motion but contained no positive premium-craft standard. They now carry the positive standard too.
 
 ### v1.1.0 — 2026-11-21 — Phase 8 hybrid expansion
 
-- **8 new skills** for work that is not "build new" (227 → 235): `clone-redesign` and `rebrand-execution` (D16), `project-takeover` and `prototype-hardening` (D15), `seo-migration` (D9), `ai-retrofit` (D17), `market-expansion` (D1), `saas-conversion` (D2).
+- **8 new skills** for work that is not "build new" (227 → 235): [`clone-redesign`](skills/cloning-replication/clone-redesign/SKILL.md) and [`rebrand-execution`](skills/cloning-replication/rebrand-execution/SKILL.md) (D16), [`project-takeover`](skills/developer-experience/project-takeover/SKILL.md) and [`prototype-hardening`](skills/developer-experience/prototype-hardening/SKILL.md) (D15), [`seo-migration`](skills/seo-content/seo-migration/SKILL.md) (D9), [`ai-retrofit`](skills/ai-features/ai-retrofit/SKILL.md) (D17), [`market-expansion`](skills/product-requirements/market-expansion/SKILL.md) (D1), [`saas-conversion`](skills/architecture/saas-conversion/SKILL.md) (D2).
 - **8 new hybrid playbooks** (13 → 21), one per hybrid mission.
-- One rule-ID collision between the two new D15 skills, found during integration and fixed by renumbering `project-takeover` into its own free ID block.
+- Totals at the time: 235 skills and 21 playbooks. The repo now holds 238 skills and 22 playbooks (see [At a glance](#at-a-glance)) — the extra skills are [`design-intelligence`](skills/frontend/design-intelligence/SKILL.md) and [`theme-library`](skills/frontend/theme-library/SKILL.md) (v1.2.0) and [`ui-ux-upscaler`](skills/frontend/ui-ux-upscaler/SKILL.md) (v1.4.0), and the extra playbook is [`ui-ux-upscaler`](skills/frontend/ui-ux-upscaler/SKILL.md).
+- One rule-ID collision between the two new D15 skills, found during integration and fixed by renumbering [`project-takeover`](skills/developer-experience/project-takeover/SKILL.md) into its own free ID block.
 
 ### v1.0.0 — 2026-11-21 — first public release
 
@@ -99,8 +102,9 @@ Every skill follows one memory-proof format:
 ## Who it is for
 
 - **A single AI agent working alone.** The repository is designed and proof-tested for one agent with no sub-agents, no leads, and no hand-offs. Everything the agent needs — routing, precedence when skills disagree, what to do when stuck, when to ask the operator — is written down in the repo itself.
+- **One agent at runtime.** The 477 named roles in the Master Brief were the build-time staffing that authored this repository — a work-partitioning architecture, not a runtime requirement. At runtime, one agent loads the core bundle and the skills it needs; it does not run 477 processes. (See `docs/METRICS.md` — "Company headcount vs runtime".)
 - **Its operator.** The person who commissions projects, answers the three approval points (requirements, deploy target and cost, go-live), supplies secrets through the handoff checklist, and gives the final ship approval. Operators should read [`USER_GUIDE.md`](USER_GUIDE.md) — it walks the whole route in plain language, including a Roman Urdu quick-start.
-- **Contributors.** See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [Maintaining this repo](#maintaining-this-repo). `SKILLS_INDEX.md` and `bundles/` are generated — never hand-edit them.
+- **Contributors.** See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [Maintaining this repo](#maintaining-this-repo).
 
 Phase 1 scope is **web applications**. Mobile and desktop applications are a later phase and are not covered by the current playbooks.
 
@@ -147,13 +151,13 @@ cd ai-all-in-one-company
 
 The skills are also listed as 5 free packs on Agensi (the platform caps a pack at 50 skills, so the library is split, not cut):
 
-| Pack | Covers | Link |
+| Pack | Covers | Link / status |
 |---|---|---|
 | Pack 1 | Product, Architecture, Backend | https://www.agensi.io/skills/omniforge-pack-1-product-architecture-backend |
 | Pack 2 | Frontend, UX, Accessibility, Cloning | https://www.agensi.io/skills/omniforge-pack-2-frontend-ux-accessibility-cloning |
-| Pack 3 | Database, AI, DevOps | Submitted — pending review (as of 2026-11-22) |
-| Pack 4 | QA, Security, Legal, DX | Submitted — pending review (as of 2026-11-22) |
-| Pack 5 | SEO, Analytics, Payments, Memory | Submitted — pending review (as of 2026-11-22) |
+| Pack 3 | Database, AI, DevOps | Pending review (as of 2026-11-22) — no public URL yet |
+| Pack 4 | QA, Security, Legal, DX | Pending review (as of 2026-11-22) — no public URL yet |
+| Pack 5 | SEO, Analytics, Payments, Memory | Pending review (as of 2026-11-22) — no public URL yet |
 
 The GitHub repository is the complete, canonical package — always use it first.
 
@@ -203,13 +207,29 @@ Never a silent skip. A gate pass must cite evidence; a gate passed without evide
 
 ### 5. Precedence — when two skills disagree
 
-Higher rank wins; every conflict is logged in the project's `DECISIONS.md`. The full 19-rank order is in `BOOTSTRAP.md`; the top ranks are:
+Higher rank wins; every conflict is logged in the project's `DECISIONS.md`. The full 19-rank order (also in `BOOTSTRAP.md`):
 
 1. Security (D7), including D17 AI-safety rules
 2. Legal / privacy (D14), including D16 clone-ethics
 3. Real Content Rule — no fakes, ever
 4. QA gates (D8, process gates only)
-5. … (remaining ranks in `BOOTSTRAP.md`)
+5. Accessibility (D13)
+6. Requirements / scope (D1)
+7. Architecture (D2)
+8. Data integrity (D5)
+9. Backend correctness (D4)
+10. Production / deployability (D6)
+11. Payments / integrations correctness (D11)
+12. Performance (D12)
+13. AI features (D17)
+14. Content / SEO (D9)
+15. Design / beauty (D3)
+16. Clone fidelity (D16)
+17. Customer experience (D18)
+18. DX / maintenance (D15)
+19. Project memory / docs (D10)
+
+Tie rule: within one rank, the more specific skill wins; if still tied, ask the user and log the conflict. Precedence never excuses skipping a gate — when a higher-ranked rule conflicts with a gate, re-run the gate's check against the higher rule's requirement; do not skip it.
 
 ### 6. If the agent gets stuck
 
@@ -247,75 +267,75 @@ It follows the stuck protocol in [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTIN
 
 ### D1 — Product & Requirements (14)
 
-`acceptance-criteria` · `competitive-analysis` · `discovery` · `fact-sheet` · `market-expansion` · `personas-jtbd` · `pricing-monetization` · `product-metrics` · `requirements-writing` · `roadmapping` · `scope-control` · `unit-economics` · `user-research` · `user-stories`
+[`acceptance-criteria`](skills/product-requirements/acceptance-criteria/SKILL.md) · [`competitive-analysis`](skills/product-requirements/competitive-analysis/SKILL.md) · [`discovery`](skills/product-requirements/discovery/SKILL.md) · [`fact-sheet`](skills/product-requirements/fact-sheet/SKILL.md) · [`market-expansion`](skills/product-requirements/market-expansion/SKILL.md) · [`personas-jtbd`](skills/product-requirements/personas-jtbd/SKILL.md) · [`pricing-monetization`](skills/product-requirements/pricing-monetization/SKILL.md) · [`product-metrics`](skills/product-requirements/product-metrics/SKILL.md) · [`requirements-writing`](skills/product-requirements/requirements-writing/SKILL.md) · [`roadmapping`](skills/product-requirements/roadmapping/SKILL.md) · [`scope-control`](skills/product-requirements/scope-control/SKILL.md) · [`unit-economics`](skills/product-requirements/unit-economics/SKILL.md) · [`user-research`](skills/product-requirements/user-research/SKILL.md) · [`user-stories`](skills/product-requirements/user-stories/SKILL.md)
 
 ### D2 — Architecture & System Design (14)
 
-`adr-writing` · `api-architecture` · `api-documentation` · `api-paradigms` · `api-versioning` · `architecture-patterns` · `c4-diagrams` · `data-architecture` · `domain-driven-design` · `event-driven` · `multitenancy-saas` · `saas-conversion` · `stack-selection` · `system-design`
+[`adr-writing`](skills/architecture/adr-writing/SKILL.md) · [`api-architecture`](skills/architecture/api-architecture/SKILL.md) · [`api-documentation`](skills/architecture/api-documentation/SKILL.md) · [`api-paradigms`](skills/architecture/api-paradigms/SKILL.md) · [`api-versioning`](skills/architecture/api-versioning/SKILL.md) · [`architecture-patterns`](skills/architecture/architecture-patterns/SKILL.md) · [`c4-diagrams`](skills/architecture/c4-diagrams/SKILL.md) · [`data-architecture`](skills/architecture/data-architecture/SKILL.md) · [`domain-driven-design`](skills/architecture/domain-driven-design/SKILL.md) · [`event-driven`](skills/architecture/event-driven/SKILL.md) · [`multitenancy-saas`](skills/architecture/multitenancy-saas/SKILL.md) · [`saas-conversion`](skills/architecture/saas-conversion/SKILL.md) · [`stack-selection`](skills/architecture/stack-selection/SKILL.md) · [`system-design`](skills/architecture/system-design/SKILL.md)
 
 ### D3 — Frontend, Design & Motion (19)
 
-`client-routing` · `component-library` · `data-fetching` · `data-visualisation` · `design-intelligence` · `design-system` · `design-tokens` · `forms` · `frontend-core` · `frontend-state` · `layout-responsive` · `motion` · `pwa-offline` · `scroll-experiences` · `theme-library` · `typography` · `ui-states` · `ui-ux-upscaler` · `webgl-3d`
+[`client-routing`](skills/frontend/client-routing/SKILL.md) · [`component-library`](skills/frontend/component-library/SKILL.md) · [`data-fetching`](skills/frontend/data-fetching/SKILL.md) · [`data-visualisation`](skills/frontend/data-visualisation/SKILL.md) · [`design-intelligence`](skills/frontend/design-intelligence/SKILL.md) · [`design-system`](skills/frontend/design-system/SKILL.md) · [`design-tokens`](skills/frontend/design-tokens/SKILL.md) · [`forms`](skills/frontend/forms/SKILL.md) · [`frontend-core`](skills/frontend/frontend-core/SKILL.md) · [`frontend-state`](skills/frontend/frontend-state/SKILL.md) · [`layout-responsive`](skills/frontend/layout-responsive/SKILL.md) · [`motion`](skills/frontend/motion/SKILL.md) · [`pwa-offline`](skills/frontend/pwa-offline/SKILL.md) · [`scroll-experiences`](skills/frontend/scroll-experiences/SKILL.md) · [`theme-library`](skills/frontend/theme-library/SKILL.md) · [`typography`](skills/frontend/typography/SKILL.md) · [`ui-states`](skills/frontend/ui-states/SKILL.md) · [`ui-ux-upscaler`](skills/frontend/ui-ux-upscaler/SKILL.md) · [`webgl-3d`](skills/frontend/webgl-3d/SKILL.md)
 
 ### D4 — Backend & APIs (16)
 
-`admin-tools` · `api-building` · `backend-auth` · `error-handling` · `feature-flags` · `file-uploads` · `media-processing` · `notifications` · `queues-jobs` · `rate-limiting` · `rbac` · `realtime` · `rest-conventions` · `sdk-design` · `user-reporting` · `validation`
+[`admin-tools`](skills/backend/admin-tools/SKILL.md) · [`api-building`](skills/backend/api-building/SKILL.md) · [`backend-auth`](skills/backend/backend-auth/SKILL.md) · [`error-handling`](skills/backend/error-handling/SKILL.md) · [`feature-flags`](skills/backend/feature-flags/SKILL.md) · [`file-uploads`](skills/backend/file-uploads/SKILL.md) · [`media-processing`](skills/backend/media-processing/SKILL.md) · [`notifications`](skills/backend/notifications/SKILL.md) · [`queues-jobs`](skills/backend/queues-jobs/SKILL.md) · [`rate-limiting`](skills/backend/rate-limiting/SKILL.md) · [`rbac`](skills/backend/rbac/SKILL.md) · [`realtime`](skills/backend/realtime/SKILL.md) · [`rest-conventions`](skills/backend/rest-conventions/SKILL.md) · [`sdk-design`](skills/backend/sdk-design/SKILL.md) · [`user-reporting`](skills/backend/user-reporting/SKILL.md) · [`validation`](skills/backend/validation/SKILL.md)
 
 ### D5 — Databases & Data (20)
 
-`backup-recovery` · `caching` · `data-access` · `data-ingestion` · `data-quality` · `data-warehousing` · `etl-pipelines` · `indexing` · `migrations` · `nosql-patterns` · `pipeline-orchestration` · `query-performance` · `read-replicas` · `schema-design` · `search-engines` · `seed-data` · `sql-fundamentals` · `tenant-isolation` · `transactions-concurrency` · `vector-db`
+[`backup-recovery`](skills/database/backup-recovery/SKILL.md) · [`caching`](skills/database/caching/SKILL.md) · [`data-access`](skills/database/data-access/SKILL.md) · [`data-ingestion`](skills/database/data-ingestion/SKILL.md) · [`data-quality`](skills/database/data-quality/SKILL.md) · [`data-warehousing`](skills/database/data-warehousing/SKILL.md) · [`etl-pipelines`](skills/database/etl-pipelines/SKILL.md) · [`indexing`](skills/database/indexing/SKILL.md) · [`migrations`](skills/database/migrations/SKILL.md) · [`nosql-patterns`](skills/database/nosql-patterns/SKILL.md) · [`pipeline-orchestration`](skills/database/pipeline-orchestration/SKILL.md) · [`query-performance`](skills/database/query-performance/SKILL.md) · [`read-replicas`](skills/database/read-replicas/SKILL.md) · [`schema-design`](skills/database/schema-design/SKILL.md) · [`search-engines`](skills/database/search-engines/SKILL.md) · [`seed-data`](skills/database/seed-data/SKILL.md) · [`sql-fundamentals`](skills/database/sql-fundamentals/SKILL.md) · [`tenant-isolation`](skills/database/tenant-isolation/SKILL.md) · [`transactions-concurrency`](skills/database/transactions-concurrency/SKILL.md) · [`vector-db`](skills/database/vector-db/SKILL.md)
 
 ### D6 — DevOps & Deployment (17)
 
-`cdn-strategy` · `ci-cd` · `cloud-costs` · `containers` · `deployment-strategies` · `domains-dns` · `free-tiers` · `hosting` · `incident-response` · `infrastructure-as-code` · `kubernetes` · `preview-environments` · `reliability` · `rollback` · `scaling` · `servers-vps` · `ssl-certificates`
+[`cdn-strategy`](skills/devops-deployment/cdn-strategy/SKILL.md) · [`ci-cd`](skills/devops-deployment/ci-cd/SKILL.md) · [`cloud-costs`](skills/devops-deployment/cloud-costs/SKILL.md) · [`containers`](skills/devops-deployment/containers/SKILL.md) · [`deployment-strategies`](skills/devops-deployment/deployment-strategies/SKILL.md) · [`domains-dns`](skills/devops-deployment/domains-dns/SKILL.md) · [`free-tiers`](skills/devops-deployment/free-tiers/SKILL.md) · [`hosting`](skills/devops-deployment/hosting/SKILL.md) · [`incident-response`](skills/devops-deployment/incident-response/SKILL.md) · [`infrastructure-as-code`](skills/devops-deployment/infrastructure-as-code/SKILL.md) · [`kubernetes`](skills/devops-deployment/kubernetes/SKILL.md) · [`preview-environments`](skills/devops-deployment/preview-environments/SKILL.md) · [`reliability`](skills/devops-deployment/reliability/SKILL.md) · [`rollback`](skills/devops-deployment/rollback/SKILL.md) · [`scaling`](skills/devops-deployment/scaling/SKILL.md) · [`servers-vps`](skills/devops-deployment/servers-vps/SKILL.md) · [`ssl-certificates`](skills/devops-deployment/ssl-certificates/SKILL.md)
 
 ### D7 — Security (14)
 
-`api-security` · `auth-hardening` · `content-moderation` · `dependency-safety` · `encryption` · `owasp` · `pci-compliance` · `penetration-testing` · `secrets-management` · `security-audit` · `security-headers` · `session-security` · `supply-chain` · `threat-modelling`
+[`api-security`](skills/security/api-security/SKILL.md) · [`auth-hardening`](skills/security/auth-hardening/SKILL.md) · [`content-moderation`](skills/security/content-moderation/SKILL.md) · [`dependency-safety`](skills/security/dependency-safety/SKILL.md) · [`encryption`](skills/security/encryption/SKILL.md) · [`owasp`](skills/security/owasp/SKILL.md) · [`pci-compliance`](skills/security/pci-compliance/SKILL.md) · [`penetration-testing`](skills/security/penetration-testing/SKILL.md) · [`secrets-management`](skills/security/secrets-management/SKILL.md) · [`security-audit`](skills/security/security-audit/SKILL.md) · [`security-headers`](skills/security/security-headers/SKILL.md) · [`session-security`](skills/security/session-security/SKILL.md) · [`supply-chain`](skills/security/supply-chain/SKILL.md) · [`threat-modelling`](skills/security/threat-modelling/SKILL.md)
 
 ### D8 — QA & Testing (15)
 
-`accessibility-testing` · `browser-verification` · `bug-triage` · `chaos-testing` · `contract-testing` · `e2e-testing` · `integration-testing` · `load-testing` · `placeholder-scan` · `qa-gates` · `security-testing` · `test-data` · `test-strategy` · `unit-testing` · `visual-regression`
+[`accessibility-testing`](skills/qa-testing/accessibility-testing/SKILL.md) · [`browser-verification`](skills/qa-testing/browser-verification/SKILL.md) · [`bug-triage`](skills/qa-testing/bug-triage/SKILL.md) · [`chaos-testing`](skills/qa-testing/chaos-testing/SKILL.md) · [`contract-testing`](skills/qa-testing/contract-testing/SKILL.md) · [`e2e-testing`](skills/qa-testing/e2e-testing/SKILL.md) · [`integration-testing`](skills/qa-testing/integration-testing/SKILL.md) · [`load-testing`](skills/qa-testing/load-testing/SKILL.md) · [`placeholder-scan`](skills/qa-testing/placeholder-scan/SKILL.md) · [`qa-gates`](skills/qa-testing/qa-gates/SKILL.md) · [`security-testing`](skills/qa-testing/security-testing/SKILL.md) · [`test-data`](skills/qa-testing/test-data/SKILL.md) · [`test-strategy`](skills/qa-testing/test-strategy/SKILL.md) · [`unit-testing`](skills/qa-testing/unit-testing/SKILL.md) · [`visual-regression`](skills/qa-testing/visual-regression/SKILL.md)
 
 ### D9 — SEO & Content (15)
 
-`aeo` · `content-strategy` · `copywriting` · `geo` · `growth-experiments` · `internal-linking` · `lifecycle-email` · `on-page-seo` · `real-content` · `seo-migration` · `sitemaps` · `social-open-graph` · `structured-data` · `technical-seo` · `web-analytics`
+[`aeo`](skills/seo-content/aeo/SKILL.md) · [`content-strategy`](skills/seo-content/content-strategy/SKILL.md) · [`copywriting`](skills/seo-content/copywriting/SKILL.md) · [`geo`](skills/seo-content/geo/SKILL.md) · [`growth-experiments`](skills/seo-content/growth-experiments/SKILL.md) · [`internal-linking`](skills/seo-content/internal-linking/SKILL.md) · [`lifecycle-email`](skills/seo-content/lifecycle-email/SKILL.md) · [`on-page-seo`](skills/seo-content/on-page-seo/SKILL.md) · [`real-content`](skills/seo-content/real-content/SKILL.md) · [`seo-migration`](skills/seo-content/seo-migration/SKILL.md) · [`sitemaps`](skills/seo-content/sitemaps/SKILL.md) · [`social-open-graph`](skills/seo-content/social-open-graph/SKILL.md) · [`structured-data`](skills/seo-content/structured-data/SKILL.md) · [`technical-seo`](skills/seo-content/technical-seo/SKILL.md) · [`web-analytics`](skills/seo-content/web-analytics/SKILL.md)
 
 ### D10 — Project & Memory (10)
 
-`changelog` · `decision-logs` · `documentation-writing` · `handover` · `memory-retrieval` · `postmortem-writing` · `progress-tracking` · `project-templates` · `readme-writing` · `runbook-writing`
+[`changelog`](skills/project-memory/changelog/SKILL.md) · [`decision-logs`](skills/project-memory/decision-logs/SKILL.md) · [`documentation-writing`](skills/project-memory/documentation-writing/SKILL.md) · [`handover`](skills/project-memory/handover/SKILL.md) · [`memory-retrieval`](skills/project-memory/memory-retrieval/SKILL.md) · [`postmortem-writing`](skills/project-memory/postmortem-writing/SKILL.md) · [`progress-tracking`](skills/project-memory/progress-tracking/SKILL.md) · [`project-templates`](skills/project-memory/project-templates/SKILL.md) · [`readme-writing`](skills/project-memory/readme-writing/SKILL.md) · [`runbook-writing`](skills/project-memory/runbook-writing/SKILL.md)
 
 ### D11 — Integrations & Payments (12)
 
-`api-keys-management` · `dunning` · `invoicing-tax` · `oauth-sso` · `payments` · `refunds-disputes` · `sdk-embeddables` · `sms` · `subscriptions` · `third-party-apis` · `transactional-email` · `webhooks`
+[`api-keys-management`](skills/integrations-payments/api-keys-management/SKILL.md) · [`dunning`](skills/integrations-payments/dunning/SKILL.md) · [`invoicing-tax`](skills/integrations-payments/invoicing-tax/SKILL.md) · [`oauth-sso`](skills/integrations-payments/oauth-sso/SKILL.md) · [`payments`](skills/integrations-payments/payments/SKILL.md) · [`refunds-disputes`](skills/integrations-payments/refunds-disputes/SKILL.md) · [`sdk-embeddables`](skills/integrations-payments/sdk-embeddables/SKILL.md) · [`sms`](skills/integrations-payments/sms/SKILL.md) · [`subscriptions`](skills/integrations-payments/subscriptions/SKILL.md) · [`third-party-apis`](skills/integrations-payments/third-party-apis/SKILL.md) · [`transactional-email`](skills/integrations-payments/transactional-email/SKILL.md) · [`webhooks`](skills/integrations-payments/webhooks/SKILL.md)
 
 ### D12 — Analytics & Observability (13)
 
-`alerting` · `apm` · `core-web-vitals` · `dashboards` · `error-tracking` · `event-tracking` · `experimentation-platform` · `logging` · `monitoring` · `performance-budgets` · `performance-optimization` · `product-analytics` · `revenue-analytics`
+[`alerting`](skills/analytics-observability/alerting/SKILL.md) · [`apm`](skills/analytics-observability/apm/SKILL.md) · [`core-web-vitals`](skills/analytics-observability/core-web-vitals/SKILL.md) · [`dashboards`](skills/analytics-observability/dashboards/SKILL.md) · [`error-tracking`](skills/analytics-observability/error-tracking/SKILL.md) · [`event-tracking`](skills/analytics-observability/event-tracking/SKILL.md) · [`experimentation-platform`](skills/analytics-observability/experimentation-platform/SKILL.md) · [`logging`](skills/analytics-observability/logging/SKILL.md) · [`monitoring`](skills/analytics-observability/monitoring/SKILL.md) · [`performance-budgets`](skills/analytics-observability/performance-budgets/SKILL.md) · [`performance-optimization`](skills/analytics-observability/performance-optimization/SKILL.md) · [`product-analytics`](skills/analytics-observability/product-analytics/SKILL.md) · [`revenue-analytics`](skills/analytics-observability/revenue-analytics/SKILL.md)
 
 ### D13 — Accessibility & i18n (10)
 
-`accessibility-audit` · `accessibility-law` · `inclusive-copy` · `internationalization` · `keyboard-accessibility` · `localization-workflow` · `reduced-motion` · `rtl-layouts` · `screen-readers` · `wcag`
+[`accessibility-audit`](skills/accessibility-i18n/accessibility-audit/SKILL.md) · [`accessibility-law`](skills/accessibility-i18n/accessibility-law/SKILL.md) · [`inclusive-copy`](skills/accessibility-i18n/inclusive-copy/SKILL.md) · [`internationalization`](skills/accessibility-i18n/internationalization/SKILL.md) · [`keyboard-accessibility`](skills/accessibility-i18n/keyboard-accessibility/SKILL.md) · [`localization-workflow`](skills/accessibility-i18n/localization-workflow/SKILL.md) · [`reduced-motion`](skills/accessibility-i18n/reduced-motion/SKILL.md) · [`rtl-layouts`](skills/accessibility-i18n/rtl-layouts/SKILL.md) · [`screen-readers`](skills/accessibility-i18n/screen-readers/SKILL.md) · [`wcag`](skills/accessibility-i18n/wcag/SKILL.md)
 
 ### D14 — Legal & Privacy (10)
 
-`age-requirements` · `audit-trails` · `clone-ethics` · `compliance-audit` · `cookie-consent` · `data-residency` · `dsar-handling` · `legal-documents` · `licensing` · `privacy-laws`
+[`age-requirements`](skills/legal-privacy/age-requirements/SKILL.md) · [`audit-trails`](skills/legal-privacy/audit-trails/SKILL.md) · [`clone-ethics`](skills/legal-privacy/clone-ethics/SKILL.md) · [`compliance-audit`](skills/legal-privacy/compliance-audit/SKILL.md) · [`cookie-consent`](skills/legal-privacy/cookie-consent/SKILL.md) · [`data-residency`](skills/legal-privacy/data-residency/SKILL.md) · [`dsar-handling`](skills/legal-privacy/dsar-handling/SKILL.md) · [`legal-documents`](skills/legal-privacy/legal-documents/SKILL.md) · [`licensing`](skills/legal-privacy/licensing/SKILL.md) · [`privacy-laws`](skills/legal-privacy/privacy-laws/SKILL.md)
 
 ### D15 — Developer Experience (10)
 
-`code-generation` · `dependency-management` · `dev-environment` · `legacy-migration` · `monorepo-tooling` · `project-takeover` · `prototype-hardening` · `refactoring` · `tech-debt` · `versioning`
+[`code-generation`](skills/developer-experience/code-generation/SKILL.md) · [`dependency-management`](skills/developer-experience/dependency-management/SKILL.md) · [`dev-environment`](skills/developer-experience/dev-environment/SKILL.md) · [`legacy-migration`](skills/developer-experience/legacy-migration/SKILL.md) · [`monorepo-tooling`](skills/developer-experience/monorepo-tooling/SKILL.md) · [`project-takeover`](skills/developer-experience/project-takeover/SKILL.md) · [`prototype-hardening`](skills/developer-experience/prototype-hardening/SKILL.md) · [`refactoring`](skills/developer-experience/refactoring/SKILL.md) · [`tech-debt`](skills/developer-experience/tech-debt/SKILL.md) · [`versioning`](skills/developer-experience/versioning/SKILL.md)
 
 ### D16 — Cloning & Replication (9)
 
-`asset-harvesting` · `behavior-cloning` · `clone-redesign` · `design-extraction` · `fidelity-verification` · `page-inventory` · `page-reconstruction` · `rebrand-execution` · `site-discovery`
+[`asset-harvesting`](skills/cloning-replication/asset-harvesting/SKILL.md) · [`behavior-cloning`](skills/cloning-replication/behavior-cloning/SKILL.md) · [`clone-redesign`](skills/cloning-replication/clone-redesign/SKILL.md) · [`design-extraction`](skills/cloning-replication/design-extraction/SKILL.md) · [`fidelity-verification`](skills/cloning-replication/fidelity-verification/SKILL.md) · [`page-inventory`](skills/cloning-replication/page-inventory/SKILL.md) · [`page-reconstruction`](skills/cloning-replication/page-reconstruction/SKILL.md) · [`rebrand-execution`](skills/cloning-replication/rebrand-execution/SKILL.md) · [`site-discovery`](skills/cloning-replication/site-discovery/SKILL.md)
 
 ### D17 — AI Features (11)
 
-`ai-cost-control` · `ai-evaluation` · `ai-observability` · `ai-retrofit` · `ai-safety` · `embeddings-search` · `llm-integration` · `prompt-engineering` · `rag-retrieval` · `recommendations` · `search-relevance`
+[`ai-cost-control`](skills/ai-features/ai-cost-control/SKILL.md) · [`ai-evaluation`](skills/ai-features/ai-evaluation/SKILL.md) · [`ai-observability`](skills/ai-features/ai-observability/SKILL.md) · [`ai-retrofit`](skills/ai-features/ai-retrofit/SKILL.md) · [`ai-safety`](skills/ai-features/ai-safety/SKILL.md) · [`embeddings-search`](skills/ai-features/embeddings-search/SKILL.md) · [`llm-integration`](skills/ai-features/llm-integration/SKILL.md) · [`prompt-engineering`](skills/ai-features/prompt-engineering/SKILL.md) · [`rag-retrieval`](skills/ai-features/rag-retrieval/SKILL.md) · [`recommendations`](skills/ai-features/recommendations/SKILL.md) · [`search-relevance`](skills/ai-features/search-relevance/SKILL.md)
 
 ### D18 — Customer Experience (9)
 
-`activation-metrics` · `churn-prevention` · `feedback-loops` · `help-center` · `in-app-chat` · `status-communications` · `support-ticketing` · `trial-conversion` · `user-onboarding`
+[`activation-metrics`](skills/customer-experience/activation-metrics/SKILL.md) · [`churn-prevention`](skills/customer-experience/churn-prevention/SKILL.md) · [`feedback-loops`](skills/customer-experience/feedback-loops/SKILL.md) · [`help-center`](skills/customer-experience/help-center/SKILL.md) · [`in-app-chat`](skills/customer-experience/in-app-chat/SKILL.md) · [`status-communications`](skills/customer-experience/status-communications/SKILL.md) · [`support-ticketing`](skills/customer-experience/support-ticketing/SKILL.md) · [`trial-conversion`](skills/customer-experience/trial-conversion/SKILL.md) · [`user-onboarding`](skills/customer-experience/user-onboarding/SKILL.md)
 
 ### Detection parameters — the 203 tells (not skills)
 
@@ -325,13 +345,13 @@ The detection parameters live in [`skills/detection/`](skills/detection/) (7 fam
 
 A site built with OmniForge must be unmatched — never "AI slop". The standard is enforced by the compulsory UI/UX skill set, not left to taste:
 
-- **Compulsory UI/UX skills (always applied to any UI work, unless the user explicitly says not to):** `design-intelligence`, `design-system`, `design-tokens`, `typography`, `layout-responsive`, `component-library`, `ui-states`, `motion`, `scroll-experiences` — plus `webgl-3d` when the chosen theme calls for it, and `ui-ux-upscaler` whenever the task upgrades an already-built application's UI.
+- **Compulsory UI/UX skills (always applied to any UI work, unless the user explicitly says not to):** [`design-intelligence`](skills/frontend/design-intelligence/SKILL.md), [`design-system`](skills/frontend/design-system/SKILL.md), [`design-tokens`](skills/frontend/design-tokens/SKILL.md), [`typography`](skills/frontend/typography/SKILL.md), [`layout-responsive`](skills/frontend/layout-responsive/SKILL.md), [`component-library`](skills/frontend/component-library/SKILL.md), [`ui-states`](skills/frontend/ui-states/SKILL.md), [`motion`](skills/frontend/motion/SKILL.md), [`scroll-experiences`](skills/frontend/scroll-experiences/SKILL.md) — plus [`webgl-3d`](skills/frontend/webgl-3d/SKILL.md) when the chosen theme calls for it, and [`ui-ux-upscaler`](skills/frontend/ui-ux-upscaler/SKILL.md) whenever the task upgrades an already-built application's UI.
 - **Full motion system on every page, in the theme's own style — never copy-paste.** Every theme carries its own motion system that practically uses, heavily, the full motion vocabulary: scroll-triggered reveals, scroll-driven / scrub animation, parallax, pinned sections, smooth scrolling, progress indicator, staggered + masked reveals, kinetic typography, marquee, counters, SVG line-draw, image scale-in-frame, hover / magnetic / tilt micro-interactions, custom cursor, skeleton loading, page transitions, and reduced-motion support.
 - **5–20 signature animated elements per theme**, specially designed for that theme and **merged with the site's content** — never pasted on top of it. A built element (a jar, a train, an instrument, any themed object) must be integrated with the content it serves; if it looks like a pointless add-on, it is a defect. 3D where possible, otherwise excellently animated.
 - **Feather-light cursor, or none.** Heavy custom cursors are banned. If a custom cursor makes the pointer hard to move, it is a defect, not premium. Normal system cursor by default; performance first.
 - **Reveals can never leave content invisible.** Every reveal needs a fallback, and the page stays readable with JavaScript disabled.
 - **Scroll-driven motion is smoothed** (requestAnimationFrame lerp, no jitter). `prefers-reduced-motion` is honoured.
-- **Design-intelligence quality gate:** before any UI work is called done, run the `design-intelligence` quality gate and record its result in `progress.md` with the other gates. The AFTER score must reach the gate's pass mark (**≥ 64/80**) and every defect in the audit list must be fixed — or explicitly reported, with a reason, in the audit file.
+- **Design-intelligence quality gate:** before any UI work is called done, run the [`design-intelligence`](skills/frontend/design-intelligence/SKILL.md) quality gate and record its result in `progress.md` with the other gates. The AFTER score must reach the gate's pass mark (**≥ 64/80**) and every defect in the audit list must be fixed — or explicitly reported, with a reason, in the audit file.
 - **"Most premium" standard:** when it feels like premium has reached its end, push more premium beyond that point. Quality never drops when quantity rises.
 - **Architecture must never leak into the UI** — see the leak gate below.
 
@@ -416,7 +436,7 @@ The library holds **100 themes**, each specified exactly once, in full, in [`ski
 
 ## UI/UX Upscaler — upgrade an existing app
 
-New builds are only half the story. The **`ui-ux-upscaler` skill** (`skills/frontend/ui-ux-upscaler/`, web apps only for now) takes an existing application's existing UI and upscales it to the same premium standard — full motion system on every page, 5–20 signature animated elements merged into content, feather-light cursor, original premium design, quality never dropping. It is the full skill form of the v1.3.0 Existing-Project Upgrade Protocol, with its own playbook ([`playbooks/ui-ux-upscaler.md`](playbooks/ui-ux-upscaler.md)) and bundle ([`bundles/ui-ux-upscaler.md`](bundles/ui-ux-upscaler.md)).
+New builds are only half the story. The **[`ui-ux-upscaler`](skills/frontend/ui-ux-upscaler/SKILL.md) skill** (`skills/frontend/ui-ux-upscaler/`, web apps only for now) takes an existing application's existing UI and upscales it to the same premium standard — full motion system on every page, 5–20 signature animated elements merged into content, feather-light cursor, original premium design, quality never dropping. It is the full skill form of the v1.3.0 Existing-Project Upgrade Protocol, with its own playbook ([`playbooks/ui-ux-upscaler.md`](playbooks/ui-ux-upscaler.md)) and bundle ([`bundles/ui-ux-upscaler.md`](bundles/ui-ux-upscaler.md)).
 
 | Spec | What it covers |
 |---|---|
@@ -442,49 +462,49 @@ Each playbook states its goal, department order, skills to load, gates by ID, fa
 
 | Playbook | Build |
 |---|---|
-| `saas-web-app` | SaaS web app |
-| `content-blog-site` | Content / blog site |
-| `api-database-service` | API + database service |
-| `e-commerce-store` | E-commerce store |
-| `clone-rebuild` | Clone rebuild |
-| `dashboard-admin-panel` | Dashboard / admin panel |
-| `booking-scheduling` | Booking & scheduling |
-| `online-learning-lms` | Online learning (LMS) |
-| `landing-page` | Landing page |
-| `portfolio-marketing-site` | Portfolio / marketing site |
-| `internal-crud-admin-tool` | Internal CRUD admin tool |
-| `two-sided-marketplace` | Two-sided marketplace |
-| `realtime-chat-app` | Realtime chat app |
+| [`saas-web-app`](playbooks/saas-web-app.md) | SaaS web app |
+| [`content-blog-site`](playbooks/content-blog-site.md) | Content / blog site |
+| [`api-database-service`](playbooks/api-database-service.md) | API + database service |
+| [`e-commerce-store`](playbooks/e-commerce-store.md) | E-commerce store |
+| [`clone-rebuild`](playbooks/clone-rebuild.md) | Clone rebuild |
+| [`dashboard-admin-panel`](playbooks/dashboard-admin-panel.md) | Dashboard / admin panel |
+| [`booking-scheduling`](playbooks/booking-scheduling.md) | Booking & scheduling |
+| [`online-learning-lms`](playbooks/online-learning-lms.md) | Online learning (LMS) |
+| [`landing-page`](playbooks/landing-page.md) | Landing page |
+| [`portfolio-marketing-site`](playbooks/portfolio-marketing-site.md) | Portfolio / marketing site |
+| [`internal-crud-admin-tool`](playbooks/internal-crud-admin-tool.md) | Internal CRUD admin tool |
+| [`two-sided-marketplace`](playbooks/two-sided-marketplace.md) | Two-sided marketplace |
+| [`realtime-chat-app`](playbooks/realtime-chat-app.md) | Realtime chat app |
 
 ### 8 hybrid playbooks (v1.1.0) — work that starts from something that already exists
 
 | Playbook | Mission |
 |---|---|
-| `clone-and-redesign` | Clone a reference product's function, then redesign everything — original design, brand, and copy |
-| `clone-and-rebrand` | Keep a working product's function; replace its identity end-to-end (name, logo, palette, voice) |
-| `rescue-and-relaunch` | Take over a broken or abandoned live product, audit it, fix in priority order, and relaunch safely |
-| `replatform-migration` | Move a live product to a new stack or platform with zero data loss and search rankings preserved |
-| `prototype-to-production` | Turn a rough MVP or prototype (including AI-generated output) into production-grade software |
-| `ai-ify-existing-product` | Add AI features to a live non-AI product without breaking what already works |
-| `localize-new-market` | Launch an existing product in a new country — language, payments, legal, pricing, support |
-| `single-app-to-saas` | Convert a single-client application into a multi-tenant SaaS with billing and tenant isolation |
+| [`clone-and-redesign`](playbooks/clone-and-redesign.md) | Clone a reference product's function, then redesign everything — original design, brand, and copy |
+| [`clone-and-rebrand`](playbooks/clone-and-rebrand.md) | Keep a working product's function; replace its identity end-to-end (name, logo, palette, voice) |
+| [`rescue-and-relaunch`](playbooks/rescue-and-relaunch.md) | Take over a broken or abandoned live product, audit it, fix in priority order, and relaunch safely |
+| [`replatform-migration`](playbooks/replatform-migration.md) | Move a live product to a new stack or platform with zero data loss and search rankings preserved |
+| [`prototype-to-production`](playbooks/prototype-to-production.md) | Turn a rough MVP or prototype (including AI-generated output) into production-grade software |
+| [`ai-ify-existing-product`](playbooks/ai-ify-existing-product.md) | Add AI features to a live non-AI product without breaking what already works |
+| [`localize-new-market`](playbooks/localize-new-market.md) | Launch an existing product in a new country — language, payments, legal, pricing, support |
+| [`single-app-to-saas`](playbooks/single-app-to-saas.md) | Convert a single-client application into a multi-tenant SaaS with billing and tenant isolation |
 
 ### 1 upscaler playbook
 
 | Playbook | Mission |
 |---|---|
-| `ui-ux-upscaler` | Upgrade an existing application's UI to the full premium standard — audit, staged passes, leak gate, score gate |
+| [`ui-ux-upscaler`](playbooks/ui-ux-upscaler.md) | Upgrade an existing application's UI to the full premium standard — audit, staged passes, leak gate, score gate |
 
 ## Bundles — token-capped loads
 
-Bundles are generated, token-capped loads — never hand-edit them. `core.md` is always on (under 10,000 tokens). Department bundles carry the full rules/gates/bans; longer examples point to the source skills.
+Bundles are generated, token-capped loads — never hand-edit them. [`core.md`](bundles/core.md) is always on (under 10,000 tokens). Department bundles carry the full rules/gates/bans; longer examples point to the source skills.
 
 | Bundle group | Files | Notes |
 |---|---|---|
-| Always-on core | `core.md` | Load first, every project |
+| Always-on core | [`core.md`](bundles/core.md) | Load first, every project |
 | Department bundles | 21 files covering 18 departments | `seo-content`, `devops-deployment`, and `frontend` are each split across two files |
 | Playbook bundles | 22 files, one per playbook | The default complete load for a playbook walk |
-| Reference only | `ALL_SKILLS.md` | Human reference / offline search only — **never load it whole** |
+| Reference only | [`ALL_SKILLS.md`](bundles/ALL_SKILLS.md) | Human reference / offline search only — **never load it whole** |
 
 ## Gates and detection
 
@@ -493,14 +513,13 @@ Bundles are generated, token-capped loads — never hand-edit them. `core.md` is
 - **Detection first:** the 203 detection parameters name what AI-generated work typically gets wrong; skills and gates are built to defeat them.
 - **Hard rules (summary):**
   - **Real Content Rule:** every fact, figure, name, and claim in any output must be real and sourced — never invent data, testimonials, statistics, or functionality.
-  - **Detection first:** see above.
   - **No silent skips:** gates pass on evidence, pass by a named fallback form, or are waived in writing.
   - **Docs before code, memory always:** project documents come first, and `progress.md` is updated as work proceeds.
   - **Architecture never leaks into the UI** (v1.4.0 hard gate — see above).
 
 ## Quality evidence — how it was proof-tested
 
-This repository was proof-tested before release, by fresh agents working only from the repo itself (full record: [`docs/METRICS.md`](docs/METRICS.md), Phase 6; per-project detail: `docs/work-log/phase-6.md`):
+This repository was proof-tested before release, by fresh agents working only from the repo itself (full record: [`docs/METRICS.md`](docs/METRICS.md), Phase 6; per-project detail: `docs/work-log/phase-6.md`): These are the repository's own proof results, reported by its authors — not independent production guarantees, and live deployment was not demonstrated end-to-end on live hosting.
 
 - **Validation:** `scripts/validate-skills.py` over the full repo — **238 skills checked, ALL PASS** (re-run 2026-11-24; the v1.0.0 record was 227/227, the v1.1.0 record 235/235). All bundles regenerated with **0 cap failures**.
 - **Findability (§5.3 formal test):** a fresh agent given only `BOOTSTRAP.md` + `SKILLS_INDEX.md` picked the correct skill first on **10/10 tasks (bar: 9/10)**, spanning 7 departments.
@@ -510,9 +529,9 @@ This repository was proof-tested before release, by fresh agents working only fr
   - **P3 Ledger API**: 42/48 gates passed; the built service shipped with zero open defects.
   - **P4 ShopClone**: 49/56 gates passed (3 waived with recorded decisions).
   - Every defect the proofs surfaced in the repo itself was fixed or verified closed; no gate's pass criterion was weakened to get there. All four proofs were built and verified locally; live deployment depends on the operator's hosting provisioning.
-- **Playbook dry runs:** the remaining playbooks were each executed end-to-end by a lone agent — **all 13 playbooks covered**. Their 66 friction points were triaged into 28 root-cause clusters; all 22 open clusters were fixed.
+- **Playbook dry runs:** the remaining playbooks were each executed end-to-end by a lone agent — **all 13 original playbooks covered**. Their 66 friction points were triaged into 28 root-cause clusters; all 22 open clusters were fixed. The 8 hybrid playbooks (v1.1.0) and the UI/UX upscaler playbook (v1.4.0) were added after the Phase 6 dry runs and are not covered by that claim.
 - **Detection calibration:** the 39 visual parameters that text-only testing could not reach were screenshot-tested against professional sites — 4 false-positive parameters found, narrowed, and re-walked clean (6/6 checks clear).
-- **Cross-review:** 94 of 227 skills were deep-read by independent reviewers before release — 0 blockers; all 6 majors and actionable minors fixed.
+- **Cross-review:** 94 of the 227 skills at that time (v1.0.0; the repo now holds 238) were deep-read by independent reviewers before release — 0 blockers; all 6 majors and actionable minors fixed.
 - **Slop and fake content:** 0 slop hits and 0 fake-content hits in the proofs that record them.
 - **Phase 8 quality process (D-020):** 30 builders, 10 cross-assigned debaters, a 5-member review board, and a 4-member final committee, with structured handoffs and a coordinator verification layer between tiers. The debaters fixed 44 flaws; the board signed off 5/5.
 
@@ -522,7 +541,7 @@ This repository was proof-tested before release, by fresh agents working only fr
 |---|---|
 | [`BOOTSTRAP.md`](BOOTSTRAP.md) | The start-here protocol every agent follows before doing anything else, including the 19-rank precedence order for when skills disagree |
 | [`SKILLS_INDEX.md`](SKILLS_INDEX.md) | Script-generated catalog of all 238 skills: department, keywords, dependencies, size, gates. Scan it; do not read it whole |
-| `VERSION`, [`CHANGELOG.md`](CHANGELOG.md) | Version file (still records 1.1.0 — see the version note at the top) and its release record |
+| [`VERSION`](VERSION), [`CHANGELOG.md`](CHANGELOG.md) | Current version (1.4.0) and its release record |
 | [`skills/`](skills/) | The 18 department folders plus `skills/detection/` (the 203 detection parameters in 7 family files) |
 | [`bundles/`](bundles/) | Generated, token-capped loads: `core.md` (always-on, under 10,000 tokens), 21 department bundle files, 22 playbook bundles, `ALL_SKILLS.md` (reference only — never load it whole) |
 | [`playbooks/`](playbooks/) | 22 project playbooks (13 by app type + 8 hybrid mission playbooks + 1 UI/UX upscaler playbook) — goal, department order, skills to load, gates by ID, failure handling, definition of done, worked mini-example |
@@ -553,7 +572,7 @@ See [`docs/MAINTENANCE_RUNBOOK.md`](docs/MAINTENANCE_RUNBOOK.md) for the full ma
 - **Can I just paste the whole repo into my agent?** No — never paste `bundles/ALL_SKILLS.md` whole. Use the staged route: one custom-instructions file, then `bundles/core.md`, then one playbook bundle.
 - **What does the agent need from me?** Your project description (or a filled `templates/USER_BRIEF.md`), decisions at the three approval points, and secrets via `templates/SECRETS_CHECKLIST.md` when a project needs them. Never paste secrets into project documents or code.
 - **What can it build?** Web applications — SaaS, stores, blogs, dashboards, booking, LMS, marketplaces, chat apps, APIs, and the 8 hybrid missions (clone, rebrand, rescue, migrate, harden a prototype, AI-ify, localize, convert to SaaS). Not mobile or desktop apps — yet.
-- **My app already exists — can OmniForge improve it?** Yes — that is the `ui-ux-upscaler` skill and playbook: audit, staged passes, leak gate, score gate. Web apps only for now.
+- **My app already exists — can OmniForge improve it?** Yes — that is the [`ui-ux-upscaler`](skills/frontend/ui-ux-upscaler/SKILL.md) skill and playbook: audit, staged passes, leak gate, score gate. Web apps only for now.
 - **What if the agent gets stuck or a skill conflicts with another?** It follows the stuck protocol and the 19-rank precedence order in `BOOTSTRAP.md`, logs the conflict in `DECISIONS.md`, and asks you rather than inventing a way out.
 - **What if a gate fails?** The agent fixes the work — it is not allowed to weaken the gate to make it pass. A waiver needs to be recorded in writing, and a waiver of a security, legal, or Real Content gate needs your explicit agreement.
 - **How much does it cost?** The repository itself is free (MIT). Your costs are your agent/platform usage and whatever hosting the project needs — the agent agrees a monthly cost cap with you before provisioning anything.
