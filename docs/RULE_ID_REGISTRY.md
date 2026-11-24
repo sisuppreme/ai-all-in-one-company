@@ -65,6 +65,7 @@ Assignment scheme (DECISIONS D-012): within each department, skills in catalog o
 | design-intelligence | FE-321–FE-340 | G-FE-161–FE-170 | BAN-FE-161–FE-170 |
 | theme-library | FE-341–FE-360 | G-FE-171–FE-180 | BAN-FE-171–FE-180 |
 | ui-ux-upscaler | FE-361–FE-380 | G-FE-181–FE-190 | BAN-FE-181–FE-190 |
+| custom-instructions (framing, v1.4.0) | FE-381–FE-384 | G-FE-191 | BAN-FE-191 |
 
 ## D4 — backend (BE)
 
