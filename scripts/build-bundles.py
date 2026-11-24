@@ -186,6 +186,11 @@ KEY_SKILLS = {
                             "localization-workflow", "payments"],
     "single-app-to-saas": ["saas-conversion", "multitenancy-saas", "tenant-isolation",
                            "schema-design", "migrations", "subscriptions"],
+    # UI/UX Upscaler playbook (2026-11-24): leads with its anchor skill,
+    # then the frontend skills its staged passes treat as load-bearing.
+    "ui-ux-upscaler": ["ui-ux-upscaler", "design-intelligence", "theme-library",
+                       "motion", "scroll-experiences", "component-library",
+                       "ui-states"],
 }
 
 CORE_TOKEN_CAP = 10_000        # core.md must stay UNDER this

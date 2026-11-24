@@ -28,6 +28,8 @@
 10. **FE-210 — Offline behavior is designed.** Losing connectivity mid-session produces the designed error state, and reconnecting recovers through the query layer's refetch — not a manual reload (with ui-states).
 11. **FE-211 — Inherited fetching law.** The WCPM §9 engineering rules apply as cited in docs/WCPM_MAPPING.md §2.2, and fetching work is designed to pass the G-ENG gate family.
 
+**Architecture must never leak into the UI.** Fetching is invisible plumbing. Endpoint URLs, query names, cache keys, request timings, and fetch statuses must never appear in UI copy, tooltips, or error messages — a slow load says the content is on its way, a failed load says what the user can do, and neither names the API, the endpoint, or the query behind it. The user asks for content; the network is never part of the answer.
+
 ## BAN list
 
 - **BAN-FE-101 — Canned responses as live data.** Banned: shipping fixture or hard-coded responses presented as live server data. Defeats: DET-FAKE-008. Bad: search returns the same twelve canned results whatever the user types, rendered as real matches. Instead: query the real endpoint through the query layer; if the endpoint does not exist yet, the feature does not ship (FE-208). Severity: BLOCK.

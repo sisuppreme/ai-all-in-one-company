@@ -29,6 +29,8 @@
 11. **FE-351 — The spec's performance budget is a ceiling, not a target.** Build inside the page performance budget in the spec (§14): total weight, per-frame cost, particle/element caps, and its cut order when something must go. When budget and spectacle conflict, the budget wins and the dial drops (design-intelligence §3.2).
 12. **FE-352 — Apply the theme whole, bend it by the rules.** Palette roles, type pairing, and element vocabulary are taken from the spec intact. Adapting a theme to another product type bends dial, layout family, and pacing only (design-intelligence §6) — never a reskin that keeps a different theme's skeleton under this theme's colours.
 
+**Architecture must never leak into the UI.** A theme is a world, not a label. Theme names, theme IDs, palette-role names, and the theme system's internals must never appear in the UI as text — the visitor lives inside the theme's world and never reads its name, its token roles, or which theme number it is. The theme is felt in every pixel and named nowhere on the page.
+
 ## BAN list
 
 - **BAN-FE-171 — Building from the index, a summary, or memory.** Banned: producing a "themed" page from a range-index entry, a catalogue card, or what the builder remembers of the theme, without reading `expanded/theme-NNN.md`. Defeats: DET-VIS-006. Bad: a "Sonar Room" page built from its one-line catalogue description ships a generic dark dashboard with a sweep graphic — the formula hero wearing the theme's name. Instead: read the canonical spec end to end first (FE-341); the decision record cites the expanded file. Severity: BLOCK.

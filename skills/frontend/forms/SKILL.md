@@ -27,6 +27,8 @@
 9. **FE-249 — Multi-step flows stay short and honest.** 3–5 steps (target ≤3) with a progress indicator showing honest step counts; forms with legal, financial, or irreversible consequences include a review step before submission (inherited R-11.4-3). Multi-step forms save progress so the user can leave and resume.
 10. **FE-250 — Signup stays minimal.** Signup targets ≤3 fields, hard maximum 5; any field beyond 3 needs a written justification in the project notes (inherited R-11.4-4).
 
+**Architecture must never leak into the UI.** Forms speak the user's language, never the schema's. Field names, schema names, validation-rule names, and backend error keys must never become labels, hints, or error text — a field is labelled by what the user should enter, and an error is written as what is wrong for the user and how to fix it. The form's structure serves the user's task; the data model behind it stays invisible.
+
 ## BAN list
 
 - **BAN-FE-121 — Placeholder as the only label.** Banned: an input whose placeholder is its sole label, disappearing the moment the user types. Defeats: DET-UX-022. Bad: `<input placeholder="Email address">` with no `<label>` — after typing, the field is anonymous. Instead: a visible, associated label (FE-241); the placeholder may show an example format only. Severity: BLOCK.

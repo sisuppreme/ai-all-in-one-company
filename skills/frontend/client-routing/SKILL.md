@@ -27,6 +27,8 @@
 9. **FE-229 — No full-page reloads inside the SPA.** In-app navigation uses the router's link component; a full document reload between app views breaks FE-222's back/forward and scroll contract.
 10. **FE-230 — Route changes are announced.** The document title updates on every route change, and route transitions expose the loading state owned by ui-states — a silent, frozen screen during navigation is a missing state, not a fast load.
 
+**Architecture must never leak into the UI.** Routes are addresses for the browser, not labels for the user. Route paths, route counts, the route tree, and navigation internals must never surface — no sitemap-style counts ('12 pages'), no route names as headings, no URL-shaped text in the interface. Navigation shows destinations in the user's words; how many routes exist and how they are organised stays behind the interface.
+
 ## BAN list
 
 - **BAN-FE-111 — State-flag navigation.** Banned: switching views with a state variable (`const [page, setPage] = useState('home')`) instead of routes. Defeats: DET-UX-014. Bad: the settings view exists only as `page === 'settings'`; refreshing on it returns to home and the URL never changes. Instead: define a route per view and navigate with the router. Severity: BLOCK.

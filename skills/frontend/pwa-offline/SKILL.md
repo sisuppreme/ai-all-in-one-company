@@ -27,6 +27,8 @@
 9. **FE-289 — Install is offered, never forced.** The install prompt appears only after real engagement, and dismissing it is final for the session (inherited R-11.7-1).
 10. **FE-290 — Private responses stay out of shared caches.** Authenticated API responses and per-user data are network-only, or cached under a per-user key with an explicit lifetime — never in a cache another user of the same browser could be served.
 
+**Architecture must never leak into the UI.** Offline capability is a promise, never a technical report. Cache names, service-worker states, sync-queue contents, and storage details must never surface in the UI — an offline state says what the user can still do and what will happen when they reconnect, in plain words, never naming the cache, the worker, or the sync mechanism. The app works offline; how it does so stays invisible.
+
 ## BAN list
 
 - **BAN-FE-141 — Browser-default offline error.** Banned: shipping a service worker whose fetch failures surface the browser's "no internet" page. Defeats: DET-UX-010. Bad: user opens the app on a train and gets the browser dinosaur instead of the product. Instead: precache a designed offline page and serve it for failed navigations (FE-285). Severity: BLOCK.

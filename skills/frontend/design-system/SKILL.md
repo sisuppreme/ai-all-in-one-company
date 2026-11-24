@@ -28,6 +28,8 @@
 10. **FE-030 — Imagery belongs to the system.** Photography and illustration follow one documented style and depict the business's real product, place, or people (DET-VIS-023); aspect ratios follow an art-directed grid so subjects survive their crops (DET-VIS-029). Stock or generated imagery depicting nothing real is not a system asset.
 11. **FE-031 — The footer is designed.** The footer uses the system's tokens and carries a brand statement, real contact paths, and legal links that resolve — not a generic link grid pasted under the page (DET-VIS-009).
 
+**Architecture must never leak into the UI.** A design system is a build-time contract, not user-facing copy. System names, token names, component names, variant names, and the system's own structure must never appear in the UI — no component names as labels, no token values shown as text, no design-system terminology in empty states or errors. The system makes the product coherent; the user experiences the coherence, never the system's vocabulary.
+
 ## BAN list
 
 - **BAN-FE-011 — The one-gradient, one-font "system".** Banned: calling a violet-blue gradient, one default font, and copy-pasted cards a design system. Defeats: DET-VIS-017. Bad: every hero, button, and headline on the site carries the same purple-to-blue gradient; the "system" page lists a logo, a gradient, and Inter. Instead: a chosen brand palette with roles, a deliberate type choice, and tokenized scales (design-tokens). Severity: BLOCK.

@@ -9,13 +9,13 @@
 
 | Component | Count | Where |
 |---|---|---|
-| Skills | 235 | `skills/<department>/<skill>/SKILL.md` |
+| Skills | 238 | `skills/<department>/<skill>/SKILL.md` |
 | Departments | 18 (D1–D18) | `skills/` |
 | Detection parameters | 203 across 7 families (visual, code, infra, content, UX, fake, crawl) | `skills/detection/` |
-| Playbooks | 21 — 13 per common web-app type + 8 hybrid mission playbooks (v1.1.0) | `playbooks/` |
-| Bundles | 43 files — the always-on core, 20 department bundle files (18 departments; `seo-content` and `devops-deployment` each split across two files), 21 playbook bundles (one per playbook), plus a reference-only `ALL_SKILLS.md` | `bundles/` |
+| Playbooks | 22 — 13 per common web-app type + 8 hybrid mission playbooks (v1.1.0) + 1 UI/UX upscaler playbook | `playbooks/` |
+| Bundles | 45 files — the always-on core, 21 department bundle files (18 departments; `seo-content`, `devops-deployment`, and `frontend` each split across two files), 22 playbook bundles (one per playbook), plus a reference-only `ALL_SKILLS.md` | `bundles/` |
 | Gates | 69 inherited acceptance gates + the 10-gate skill-release QA protocol (G-QA-01…10), plus at least 3 gates inside every skill | `gates/`, `skills/` |
-| Worked examples | 706 before/after example files (3 per skill; `vector-db` carries a fourth) + 18 department example documents | `skills/*/examples/`, `examples/` |
+| Worked examples | 715 before/after example files (3 per skill; `vector-db` carries a fourth) + 18 department example documents | `skills/*/examples/`, `examples/` |
 
 Every skill follows one memory-proof format: numbered rules with stable IDs, a BAN list (each banned pattern names the detection parameter it defeats and gives the correct replacement), gates with evidence requirements, anti-patterns, examples, recall anchors, and a checklist.
 
@@ -87,11 +87,11 @@ Every platform starts the same way: **one** custom-instructions file from `custo
 | Path | What it holds |
 |---|---|
 | `BOOTSTRAP.md` | The start-here protocol every agent follows before doing anything else, including the 19-rank precedence order for when skills disagree |
-| `SKILLS_INDEX.md` | Script-generated catalog of all 235 skills: department, keywords, dependencies, size, gates. Scan it; do not read it whole |
+| `SKILLS_INDEX.md` | Script-generated catalog of all 238 skills: department, keywords, dependencies, size, gates. Scan it; do not read it whole |
 | `VERSION`, `CHANGELOG.md` | Current version (1.1.0) and its release record |
 | `skills/` | The 18 department folders plus `skills/detection/` (the 203 detection parameters in 7 family files) |
-| `bundles/` | Generated, token-capped loads: `core.md` (always-on, under 10,000 tokens), 20 department bundle files (18 departments; `seo-content` and `devops-deployment` each split across two files), 21 playbook bundles, `ALL_SKILLS.md` (reference only — never load it whole) |
-| `playbooks/` | 21 project playbooks (13 by app type + 8 hybrid mission playbooks) — goal, department order, skills to load, gates by ID, failure handling, definition of done, worked mini-example |
+| `bundles/` | Generated, token-capped loads: `core.md` (always-on, under 10,000 tokens), 21 department bundle files (18 departments; `seo-content`, `devops-deployment`, and `frontend` each split across two files), 22 playbook bundles, `ALL_SKILLS.md` (reference only — never load it whole) |
+| `playbooks/` | 22 project playbooks (13 by app type + 8 hybrid mission playbooks + 1 UI/UX upscaler playbook) — goal, department order, skills to load, gates by ID, failure handling, definition of done, worked mini-example |
 | `gates/` | The gate registry: `ACCEPTANCE_GATES.md` (69 gates), `QA_PROTOCOL_GATES.md` (G-QA-01…10), `FINAL_ACCEPTANCE_CHECKLIST.md`, `DEFECT_TAXONOMY.md`, `NUMBERS_REGISTRY.md`, `VISUAL_QA_INDEX.md`, and the placeholder scan lists |
 | `custom-instructions/` | Ready-to-paste entry points for Claude Code, Claude, Google AI Studio, and generic agents, plus a README explaining the set |
 | `templates/` | `SKILL_TEMPLATE.md`, `USER_BRIEF.md`, `SECRETS_CHECKLIST.md`, the markdownlint starter config, and the 21 mandated per-project-type file manifests (the 13 original project types plus the 8 hybrid missions) |
@@ -102,7 +102,7 @@ Every platform starts the same way: **one** custom-instructions file from `custo
 
 ## The 18 departments
 
-D1 Product & Requirements (14 skills) · D2 Architecture & System Design (14) · D3 Frontend, Design & Motion (16) · D4 Backend & APIs (16) · D5 Databases & Data (20) · D6 DevOps & Deployment (17) · D7 Security (14) · D8 QA & Testing (15) · D9 SEO & Content (15) · D10 Project & Memory (10) · D11 Integrations & Payments (12) · D12 Analytics & Observability (13) · D13 Accessibility & i18n (10) · D14 Legal & Privacy (10) · D15 Developer Experience (10) · D16 Cloning & Replication (9) · D17 AI Features (11) · D18 Customer Experience (9).
+D1 Product & Requirements (14 skills) · D2 Architecture & System Design (14) · D3 Frontend, Design & Motion (19) · D4 Backend & APIs (16) · D5 Databases & Data (20) · D6 DevOps & Deployment (17) · D7 Security (14) · D8 QA & Testing (15) · D9 SEO & Content (15) · D10 Project & Memory (10) · D11 Integrations & Payments (12) · D12 Analytics & Observability (13) · D13 Accessibility & i18n (10) · D14 Legal & Privacy (10) · D15 Developer Experience (10) · D16 Cloning & Replication (9) · D17 AI Features (11) · D18 Customer Experience (9).
 
 ## Quality evidence
 

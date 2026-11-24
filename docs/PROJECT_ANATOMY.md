@@ -751,7 +751,7 @@ Coverage: 127 elements in 12 parts. Traceability gate (Phase 0 exit): all 227 ca
 - **Verify:** Inspect the token source file; grep the codebase for hard-coded hex colors and pixel values outside it — the count should be near zero.
 - **Source:** Design Tokens Format Module 2025.10 — https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/
 - **Owning departments:** D3
-- **Skills that serve it:** design-system, design-tokens, rebrand-execution
+- **Skills that serve it:** design-system, design-tokens, rebrand-execution, ui-ux-upscaler
 
 ## Component library
 - **What:** The coded collection of reusable UI building blocks — buttons, inputs, dialogs, tables — each with defined props, variants, and states, documented for builders.

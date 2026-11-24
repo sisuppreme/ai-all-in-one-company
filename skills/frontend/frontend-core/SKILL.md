@@ -27,6 +27,8 @@
 9. **FE-009 — The rendering surface serves search honestly.** Titles, meta descriptions, and structured data are rendered from the page's real content (WCPM §10 rendering surface; G-SCH family is designed to pass here, content owned by D9). Metadata describing content the page does not contain is a fabrication, not SEO.
 10. **FE-010 — Works degraded before it works pretty.** Every page must function at 320px wide, on keyboard alone, and with images or scripts failed, before visual enhancement is layered on. Enhancement is progressive by construction.
 
+**Architecture must never leak into the UI.** The frontend is the user's window onto the product, never onto its construction. Nothing this skill orchestrates — the app shell, the routing of views, the composition of pages from components — may surface as UI text or structure: no route names or page counts, no component or module names, no mention of the shell, the framework, or the build. The visitor sees tasks, content, and actions in their own words; how the frontend is assembled stays behind the interface.
+
 ## BAN list
 
 - **BAN-FE-001 — AI artifacts in shipped photography.** Banned: publishing an image with malformed hands, gibberish in-image text, or warped logos. Defeats: DET-VIS-024. Bad: a generated "team at work" hero whose laptop screen shows melted lettering and whose subject has six fingers. Instead: use real photography or a clearly illustrative graphic with no fake text or hands. Severity: BLOCK.

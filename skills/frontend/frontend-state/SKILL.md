@@ -27,6 +27,8 @@
 9. **FE-189 — Client flags are not session truth.** A client-side boolean (for example `isLoggedIn` in a store) never substitutes for the server's session and authorization checks; it may mirror them for display, and the server decides.
 10. **FE-190 — Inherited state boundary.** The WCPM §9 engineering rules and the DAT parameter family's state/fetching boundary apply as cited in docs/WCPM_MAPPING.md §2.2 and §2.4, and state work is designed to pass the G-ENG gate family.
 
+**Architecture must never leak into the UI.** State is the user's situation, not the store's. Store names, slice names, state-machine names, and cache keys must never appear in the UI, in labels, or in error text; a stale or missing piece of state is expressed as what the user sees and can do, never as which store or query failed. The interface shows the user's world as it is; the machinery that holds it stays invisible.
+
 ## BAN list
 
 - **BAN-FE-091 — Hand-synchronized server mirror.** Banned: copying server data into a global store and keeping it current with manual sync code. Defeats: DET-FAKE-004. Bad: the orders list is fetched once, stored in Redux, and patched by hand after each mutation — the dashboard shows frozen numbers the API no longer agrees with. Instead: read through the query cache and invalidate on mutation (data-fetching). Severity: BLOCK.

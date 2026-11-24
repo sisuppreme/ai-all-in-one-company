@@ -27,6 +27,8 @@
 9. **FE-309 — Verify the frame budget on a low-end device.** Frame rate is profiled on a low-end phone, not the development machine; the scene holds its budget there with quality scaling engaged.
 10. **FE-310 — Respect the weight and settle budgets.** 3D assets stay ≤500 KB before first interaction, streaming progressively after it, and a camera intro settles within 1.5 s (inherited R-7.6-4, R-7.6-1). A full-screen WebGL hero that delays primary content fails the frontend-core performance review unless explicitly justified.
 
+**Architecture must never leak into the UI.** 3D is a world the user visits, never a renderer on display. Renderer names, engine details, shader names, geometry counts, and capability reports must never appear in the UI — no engine labels, no device-capability text, no mention of what the scene is made of. The visitor experiences the scene; the machinery that draws it stays behind the canvas.
+
 ## BAN list
 
 - **BAN-FE-151 — Abstract 3D blob hero.** Banned: an abstract 3D blob, torus, or fluid shape as hero decoration with no relationship to the product (tell GL-04, P0). Defeats: DET-VIS-028. Bad: a chrome torus slowly rotating beside the headline of an invoicing tool. Instead: show the product, or use a 2D visual that carries the page's actual message (FE-304). Severity: BLOCK.

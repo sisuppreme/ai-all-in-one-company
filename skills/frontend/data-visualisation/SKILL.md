@@ -27,6 +27,8 @@
 9. **FE-269 — Real data only.** Charts render real, possible values that add up. Demo or sample data is plausible, specific, and uneven — and clearly marked as sample wherever it appears (inherited BAN-099).
 10. **FE-270 — Uncertainty is shown, not hidden.** Where the underlying data carries ranges, estimates, or partial coverage, the chart shows it (range bands, "estimated" markers, a coverage note) instead of drawing a single confident line.
 
+**Architecture must never leak into the UI.** Charts show the user's numbers, never the query behind them. Query names, metric keys, aggregation names, and data-source labels must never become chart titles, axis labels, legends, or tooltips — a chart is titled by what it means for the user, and its labels use the user's words for the things being measured. The data's origin is a build concern; the chart is a user-facing answer.
+
 ## BAN list
 
 - **BAN-FE-131 — The unsourced or impossible chart.** Banned: a chart with no source line, no axis labels, or values that cannot be true (shares summing past 100%, counts below zero). Defeats: DET-VIS-035. Bad: a dashboard area chart of "revenue growth" with no axes, no source, and a curve that only rises (inherited BAN-120). Instead: labeled axes, units, source with date, and real values (FE-266, FE-269). Severity: BLOCK.

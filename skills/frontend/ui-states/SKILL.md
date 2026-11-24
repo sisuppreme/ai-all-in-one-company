@@ -28,6 +28,8 @@
 10. **FE-170 — State changes survive reduced motion.** Under `prefers-reduced-motion`, state changes remain fully legible without movement — no information is carried by animation alone (WCPM rule CR-09, cited per docs/WCPM_MAPPING.md §2.2).
 11. **FE-171 — Inherited state law.** The WCPM §8 component-and-state rules and the BEH parameter family apply as cited in docs/WCPM_MAPPING.md §2.2 and §2.4, and state work is designed to pass the G-EXP gate family.
 
+**Architecture must never leak into the UI.** States describe the user's situation, never the system's. Loading, empty, and error states must be written in user-facing concepts — what happened for the user and what they can do next — never in system terms: no endpoint names, no status codes as the message, no schema or field names, no mention of which service, module, or store failed. A failed save says the work is safe and how to retry; it never names the machinery that failed.
+
 ## BAN list
 
 - **BAN-FE-081 — Blank container state.** Banned: a view that renders an empty region when data is empty, loading, or failed. Defeats: DET-VIS-032. Bad: a new account's dashboard is a white page with a sidebar because the list is empty. Instead: the designed empty state for that condition (FE-167). Severity: BLOCK.

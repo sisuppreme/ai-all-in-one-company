@@ -29,6 +29,8 @@
 11. **FE-131 — Nothing essential disappears on small screens.** Content or actions removed at a breakpoint must be reachable another way on that viewport; "it didn't fit" is not a removal reason (DET-VIS-037).
 12. **FE-132 — Inherited layout law.** The WCPM LAY, SEC, and SPC parameter families apply as cited in docs/WCPM_MAPPING.md §2.4, and layout work is designed to pass the G-EXP gate family.
 
+**Architecture must never leak into the UI.** Layout is felt, not announced. Breakpoint names, grid names, column counts, and the responsive system's structure must never surface in the UI — no 'desktop view' labels, no layout terminology in empty states, no indication of which breakpoint is active. The layout adapts silently; the user simply finds everything where they expect it.
+
 ## BAN list
 
 - **BAN-FE-061 — Fixed-height hero.** Banned: a hero with a fixed `100vh` or pixel height whose text or CTA clips on short or landscape screens. Defeats: DET-VIS-039. Bad: `.hero { height: 100vh; }` cuts the signup button off on a 667px-tall phone. Instead: `min-height` sized by content, with the CTA always in flow. Severity: BLOCK.

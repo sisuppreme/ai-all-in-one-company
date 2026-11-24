@@ -28,6 +28,8 @@
 10. **FE-150 — Emoji are never structural.** Emoji do not appear as heading decoration, list markers, or iconography in the interface (DET-VIS-016); icons come from the component library's icon set.
 11. **FE-151 — Inherited typography law.** The WCPM TYP parameter family applies as cited in docs/WCPM_MAPPING.md §2.4, and typography work is designed to pass the G-VIS gate family.
 
+**Architecture must never leak into the UI.** Type carries the user's words, never the type system's. Font names, scale names, type-role labels, and the typographic system's vocabulary must never appear in UI copy — no font names in settings or about text, no scale labels, no type-system terminology anywhere a user can read it. The reader notices the voice, never the foundry.
+
 ## BAN list
 
 - **BAN-FE-071 — Gradient headline text.** Banned: `background-clip: text` gradient fills on headlines as the default emphasis device. Defeats: DET-VIS-018. Bad: every H1 on the site is a purple-to-blue gradient. Instead: a solid token color with weight and size doing the emphasis (FE-145). Severity: WARN.

@@ -27,6 +27,8 @@
 9. **FE-049 — Dark surfaces are layered, not glowing.** Dark themes are built from layered surface tokens with restrained elevation; colored glow shadows are not an elevation device (DET-VIS-019).
 10. **FE-050 — Token changes are reviewed as diffs.** Any change to the token source ships with a diff review and the design-system changelog entry (FE-024); a changed value with no diff review is treated as an accidental edit.
 
+**Architecture must never leak into the UI.** Tokens are build-time values, never content. Token names, token values, and the token hierarchy must never be rendered as labels, shown in interface text, or exposed through UI copy, tooltips, or error messages. A colour, a spacing value, or a duration is a decision the user feels; it is never a word the user reads.
+
 ## BAN list
 
 - **BAN-FE-021 — Raw values in component styles.** Banned: hex codes, pixel values, or millisecond literals written directly in component or page styles. Defeats: DET-VIS-020. Bad: `.btn-primary { background: #6d5df6; padding: 13px 22px; }` — a one-off violet and an off-scale padding that exist nowhere in the token set and will never theme, never be audited, and never match the next page. Instead: `background: var(--color-action-primary); padding: var(--space-control-y) var(--space-control-x)`. Severity: BLOCK.

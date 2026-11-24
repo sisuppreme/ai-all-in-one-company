@@ -27,6 +27,8 @@
 9. **FE-069 — Cards earn their weight.** In a grid, content of unequal importance gets unequal weight: one item may be featured, span wider, or carry richer media. Identical cards are permitted only where the content is genuinely parallel — and their copy must still be specific, not interchangeable (DET-VIS-003).
 10. **FE-070 — Pages assemble, they do not imitate.** A page needing something new extends the library; hand-rolled markup that duplicates a library component is a defect, found by the grep gate (G-FE-033), not by taste.
 
+**Architecture must never leak into the UI.** Component names are for builders, not users. No component name, variant name, prop name, or slot name may surface in the UI — not as a label, a heading, an empty-state message, or an error. Buttons say what they do in the user's words; cards, modals, and tables carry the user's content, never the library's vocabulary.
+
 ## BAN list
 
 - **BAN-FE-031 — The interchangeable card grid.** Banned: a grid of identical cards whose descriptions could be swapped between cards — or between products — without anyone noticing. Defeats: DET-VIS-003. Bad: three feature cards of identical height and two-line descriptions ("Powerful tools for modern teams", "Built for the way you work", "Everything you need to succeed") that fit any SaaS product ever made. Instead: cards weighted by importance (FE-069) with copy that names this product's specific capability. Severity: WARN.
